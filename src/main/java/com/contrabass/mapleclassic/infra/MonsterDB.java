@@ -1,4 +1,4 @@
 package com.contrabass.mapleclassic.infra;
 
-public class userDB {
+public class MonsterDB {
 }
