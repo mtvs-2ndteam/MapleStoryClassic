@@ -11,8 +11,10 @@ public class GameController {
 
     public void run() {
         mainView.printStartView();
+        mainView.printLoginView();
         while (true) {
-            
+            mainView.printMainPage("응", 10, "법사");
+            break;
         }
     }
 }

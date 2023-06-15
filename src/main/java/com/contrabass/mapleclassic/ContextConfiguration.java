@@ -9,10 +9,12 @@ import com.contrabass.mapleclassic.domain.repository.UserRepository;
 import com.contrabass.mapleclassic.infra.UserDB;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Scope;
 
 @Configuration
 public class ContextConfiguration {
     @Bean
+    @Scope("prototype")
     public GameController gameController() {
         return new GameController();
     }
@@ -38,6 +40,7 @@ public class ContextConfiguration {
     }
 
     @Bean
+    @Scope("prototype")
     public UserRepository userRepository() {
         return new UserRepository();
     }
