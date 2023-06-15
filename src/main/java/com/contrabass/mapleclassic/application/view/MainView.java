@@ -14,9 +14,10 @@ public class MainView {
         System.out.println("비밀번호를 입력하세요.");
     }
 
-    public void printLoginView() {
+    public void printSuccessLoginView() {
+        System.out.println("로그인 성공!");
         System.out.println("=====Maple World=====");
-        System.out.println("메인으로 이동 중...\n. . .");
+        System.out.println("메인으로 이동 중...");
     }
 
     public void printMainPage(String nickName, int level, String job) {
