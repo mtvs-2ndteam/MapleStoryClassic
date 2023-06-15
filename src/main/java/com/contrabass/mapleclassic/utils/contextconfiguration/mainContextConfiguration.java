@@ -1,18 +1,20 @@
-package com.contrabass.mapleclassic;
+package com.contrabass.mapleclassic.utils.contextconfiguration;
 
 
 import com.contrabass.mapleclassic.application.controller.GameController;
+import com.contrabass.mapleclassic.application.service.GameService;
 import com.contrabass.mapleclassic.application.view.MainView;
 import com.contrabass.mapleclassic.application.view.UserView;
 import com.contrabass.mapleclassic.domain.entity.UserDTO;
 import com.contrabass.mapleclassic.domain.repository.UserRepository;
 import com.contrabass.mapleclassic.infra.UserDB;
+import com.contrabass.mapleclassic.utils.MainException;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Scope;
 
 @Configuration
-public class ContextConfiguration {
+public class mainContextConfiguration {
     @Bean
     @Scope("prototype")
     public GameController gameController() {
@@ -20,8 +22,21 @@ public class ContextConfiguration {
     }
 
     @Bean
+    @Scope("prototype")
+    public MainException mainException() {
+        return new MainException();
+    }
+
+    @Bean
+    @Scope("prototype")
     public MainView mainView() {
         return new MainView();
+    }
+
+    @Bean
+    @Scope("prototype")
+    public GameService gameService() {
+        return new GameService();
     }
 
     @Bean
