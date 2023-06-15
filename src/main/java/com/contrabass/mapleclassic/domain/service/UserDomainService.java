@@ -1,4 +1,7 @@
 package com.contrabass.mapleclassic.domain.service;
 
 public class UserDomainService {
+    public void validateUserId(String readLine) {
+        
+    }
 }
