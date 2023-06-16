@@ -1,6 +1,7 @@
 package com.contrabass.mapleclassic.application.service;
 
 import com.contrabass.mapleclassic.application.controller.MapController;
+import com.contrabass.mapleclassic.application.view.MapView;
 import com.contrabass.mapleclassic.domain.service.GameDomainService;
 import com.contrabass.mapleclassic.domain.service.UserDomainService;
 import org.springframework.stereotype.Service;
@@ -9,6 +10,7 @@ import static com.contrabass.mapleclassic.Constant.CONTEXT;
 
 @Service
 public class GameService {
+    MapView mapView = CONTEXT.getBean("mapView", MapView.class);
     MapController mapController = CONTEXT.getBean("mapController", MapController.class);
     GameDomainService gameDomainService = CONTEXT.getBean("gameDomainService", GameDomainService.class);
     UserDomainService userDomainService = CONTEXT.getBean("userDomainService", UserDomainService.class);
@@ -22,6 +24,7 @@ public class GameService {
     public void selectMaps(int selectNum, int level) {
         String jugdeLevel = gameDomainService.judgeLevel(level);
 
+        // 정상 입장
         if ((jugdeLevel.equals("헤네시스")
                 || jugdeLevel.equals("커닝시티")
                 || jugdeLevel.equals("페리온")
@@ -40,17 +43,19 @@ public class GameService {
         if (jugdeLevel.equals("엘리니아") && selectNum == 4) {
             mapController.selectEllinia();
         }
+
+        // 잘못된 입장
         if (jugdeLevel.equals("헤네시스") && selectNum == 2) {
-            System.out.println("\n커닝시티는 레벨 11 이상부터 입장 가능합니다.\n");
+            mapView.printKerningCityError();
         }
         if ((jugdeLevel.equals("헤네시스")
                 || jugdeLevel.equals("커닝시티")) && selectNum == 3) {
-            System.out.println("\n페리온은 레벨 21 이상부터 입장 가능합니다.\n");
+            mapView.printPerionError();
         }
         if ((jugdeLevel.equals("헤네시스")
                 || jugdeLevel.equals("커닝시티")
                 || jugdeLevel.equals("페리온")) && selectNum == 4) {
-            System.out.println("\n엘리니아는 레벨 31 이상부터 입장 가능합니다.\n");
+            mapView.printElliniaError();
         }
     }
 

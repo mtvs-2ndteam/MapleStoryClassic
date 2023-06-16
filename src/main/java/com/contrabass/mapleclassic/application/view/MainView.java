@@ -1,10 +1,6 @@
 package com.contrabass.mapleclassic.application.view;
 
-import static com.contrabass.mapleclassic.Constant.CONTEXT;
-
 public class MainView {
-    UserView userView = CONTEXT.getBean("userView", UserView.class);
-
     public void printStartView() {
         System.out.println("로딩 중...\n. . .\n");
         System.out.println("로그인이 필요합니다.");
@@ -60,7 +56,7 @@ public class MainView {
     }
 
     public void printEndMessage() {
-        System.out.println("\n프로그램 종료...\n");
+        System.out.println("\n게임을 종료합니다...\n");
     }
 
 

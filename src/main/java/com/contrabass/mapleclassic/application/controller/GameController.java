@@ -2,6 +2,7 @@ package com.contrabass.mapleclassic.application.controller;
 
 import com.contrabass.mapleclassic.application.service.GameService;
 import com.contrabass.mapleclassic.application.view.MainView;
+import com.contrabass.mapleclassic.application.view.MapView;
 import com.contrabass.mapleclassic.application.view.UserView;
 import com.contrabass.mapleclassic.utils.MainException;
 import org.springframework.stereotype.Controller;
@@ -15,6 +16,7 @@ public class GameController {
     MapController mapController = CONTEXT.getBean("mapController", MapController.class);
     GameService gameService = CONTEXT.getBean("gameService", GameService.class);
     MainView mainView = CONTEXT.getBean("mainView", MainView.class);
+    MapView mapView = CONTEXT.getBean("mapView", MapView.class);
     UserView userView = CONTEXT.getBean("userView", UserView.class);
     int userLevel = 11; // 유저 정보 불러오는 메소드 써야함
 
@@ -37,27 +39,28 @@ public class GameController {
             if (selectNum == 2) {
                 selectMaps();
             }
-            // 0. 로비
+            // 0. 게임 종료
             if (selectNum == 0) {
-                mainView.printLobbyMessage();
+                mainView.printEndMessage();
                 return;
             }
             // 에러
             if (selectNum == -1) {
                 mainView.printErrorMessage();
-                break;
             }
         }
     }
 
     ///// 내 정보 /////
     public void selectMyInfo() {
+        userView.printMyInfoMessage();
         while (true) {
             userView.printSelectMyInfo();
             int selectNum = mainException.solveInputValueException(SCANNER.nextLine());
 
+            // 1. 스텟 찍기
             if (selectNum == 1) {
-                break;
+                continue;
             }
             // 0. 로비
             if (selectNum == 0) {
@@ -67,13 +70,13 @@ public class GameController {
             // 에러
             if (selectNum == -1) {
                 mainView.printErrorMessage();
-                break;
             }
         }
     }
 
     ///// 마을 이동 /////
     public void selectMaps() {
+        mapView.printSelectMapsMessage();
         while (true) {
             mainView.printMapMovement();
             int selectNum = mainException.solveInputValueException(SCANNER.nextLine());
@@ -98,7 +101,6 @@ public class GameController {
             // 에러
             if (selectNum == -1) {
                 mainView.printErrorMessage();
-                break;
             }
         }
     }

@@ -16,138 +16,202 @@ public class MapController {
 
     ///// 헤네시스 (레벨 1 이상 입장 가능) /////
     public void selectHenesys() {
+        mapView.printHenesysMessage();
         while (true) {
             mapView.printHenesys();
-            switch (mainException.solveInputValueException(SCANNER.nextLine())) {
-                case 1: // 상점
-                    selectShop();
-                    break;
-                case 2: // 사우나
-                    selectSauna();
-                    break;
-                case 3: // 사냥터
-                    break;
-                case 4: // 보스
-                    break;
-                case 0: // 뒤로 가기
-                    mainView.printSelectTownMessage();
-                    return;
-                default:
-                    mainView.printErrorMessage();
-                    break;
+            int selectNum = mainException.solveInputValueException(SCANNER.nextLine());
+
+            // 1. 상점
+            if (selectNum == 1) {
+                selectShop();
+                continue;
+            }
+            // 2. 사우나
+            if (selectNum == 2) {
+                selectSauna();
+                continue;
+            }
+            // 3. 사냥터
+            if (selectNum == 3) {
+                continue;
+            }
+            // 4. 보스
+            if (selectNum == 4) {
+                continue;
+            }
+            // 0. 마을 선택으로 돌아가기
+            if (selectNum == 0) {
+                mainView.printSelectTownMessage();
+                return;
+            }
+            // 에러
+            if (selectNum == -1) {
+                mainView.printErrorMessage();
             }
         }
     }
 
     ///// 커닝시티 (레벨 11 이상 입장 가능) /////
     public void selectKerningCity() {
+        mapView.printKerningCityMessage();
         while (true) {
             mapView.printKerningCity();
-            switch (mainException.solveInputValueException(SCANNER.nextLine())) {
-                case 1: // 상점
-                    selectShop();
-                    break;
-                case 2: // 사우나
-                    selectSauna();
-                    break;
-                case 3: // 사냥터
-                    break;
-                case 4: // 보스
-                    break;
-                case 0: // 뒤로 가기
-                    mainView.printSelectTownMessage();
-                    return;
-                default:
-                    mainView.printErrorMessage();
-                    break;
+            int selectNum = mainException.solveInputValueException(SCANNER.nextLine());
+
+            // 1. 상점
+            if (selectNum == 1) {
+                selectShop();
+                continue;
+            }
+            // 2. 사우나
+            if (selectNum == 2) {
+                selectSauna();
+                continue;
+            }
+            // 3. 사냥터
+            if (selectNum == 3) {
+                continue;
+            }
+            // 4. 보스
+            if (selectNum == 4) {
+                continue;
+            }
+            // 0. 마을 선택으로 돌아가기
+            if (selectNum == 0) {
+                mainView.printSelectTownMessage();
+                return;
+            }
+            // 에러
+            if (selectNum == -1) {
+                mainView.printErrorMessage();
             }
         }
     }
 
     ///// 페리온 (레벨 21 이상 입장 가능) /////
     public void selectPerion() {
+        mapView.printPerionMessage();
         while (true) {
             mapView.printPerion();
-            switch (mainException.solveInputValueException(SCANNER.nextLine())) {
-                case 1: // 상점
-                    selectShop();
-                    break;
-                case 2: // 사우나
-                    selectSauna();
-                    break;
-                case 3: // 사냥터
-                    break;
-                case 4: // 보스
-                    break;
-                case 0: // 뒤로 가기
-                    mainView.printSelectTownMessage();
-                    return;
-                default:
-                    mainView.printErrorMessage();
-                    break;
+            int selectNum = mainException.solveInputValueException(SCANNER.nextLine());
+
+            // 1. 상점
+            if (selectNum == 1) {
+                selectShop();
+                continue;
+            }
+            // 2. 사우나
+            if (selectNum == 2) {
+                selectSauna();
+                continue;
+            }
+            // 3. 사냥터
+            if (selectNum == 3) {
+                continue;
+            }
+            // 4. 보스
+            if (selectNum == 4) {
+                continue;
+            }
+            // 0. 마을 선택으로 돌아가기
+            if (selectNum == 0) {
+                mainView.printSelectTownMessage();
+                return;
+            }
+            // 에러
+            if (selectNum == -1) {
+                mainView.printErrorMessage();
             }
         }
     }
 
     ///// 엘리니아 (레벨 31 이상 입장 가능) /////
     public void selectEllinia() {
+        mapView.printElliniaMessage();
         while (true) {
             mapView.printEllinia();
-            switch (mainException.solveInputValueException(SCANNER.nextLine())) {
-                case 1: // 상점
-                    selectShop();
-                    break;
-                case 2: // 사우나
-                    selectSauna();
-                    break;
-                case 3: // 사냥터
-                    break;
-                case 4: // 보스
-                    break;
-                case 0: // 뒤로 가기
-                    mainView.printSelectTownMessage();
-                    return;
-                default:
-                    mainView.printErrorMessage();
-                    break;
+            int selectNum = mainException.solveInputValueException(SCANNER.nextLine());
+
+            // 1. 상점
+            if (selectNum == 1) {
+                selectShop();
+                continue;
+            }
+            // 2. 사우나
+            if (selectNum == 2) {
+                selectSauna();
+                continue;
+            }
+            // 3. 사냥터
+            if (selectNum == 3) {
+                continue;
+            }
+            // 4. 보스
+            if (selectNum == 4) {
+                continue;
+            }
+            // 0. 마을 선택으로 돌아가기
+            if (selectNum == 0) {
+                mainView.printSelectTownMessage();
+                return;
+            }
+            // 에러
+            if (selectNum == -1) {
+                mainView.printErrorMessage();
             }
         }
     }
 
     ///// 상점 /////
     public void selectShop() {
+        mapView.printShopMessage();
         while (true) {
             mapView.printShop();
-            switch (mainException.solveInputValueException(SCANNER.nextLine())) {
-                case 1: // HP 포션
-                    break;
-                case 2: // MP 포션
-                    break;
-                case 0: // 뒤로 가기
-                    mainView.printBackTownMessage();
-                    return;
-                default:
-                    mainView.printErrorMessage();
-                    break;
+            int selectNum = mainException.solveInputValueException(SCANNER.nextLine());
+
+            // 1. HP 물약
+            if (selectNum == 1) {
+                continue;
+            }
+            // 2. MP 물약
+            if (selectNum == 2) {
+                continue;
+            }
+            // 0. 마을로 돌아가기
+            if (selectNum == 0) {
+                mainView.printBackTownMessage();
+                return;
+            }
+            // 에러
+            if (selectNum == -1) {
+                mainView.printErrorMessage();
             }
         }
     }
 
     ///// 사우나 /////
     public void selectSauna() {
+        mapView.printSaunaMessage();
         while (true) {
             mapView.printSauna();
-            switch (mainException.solveInputValueException(SCANNER.nextLine())) {
-                case 1: // 5초 이용
-                    break;
-                case 2: // 10초 이용
-                    break;
-                case 0: // 뒤로 가기
-                    mainView.printBackTownMessage();
-                    return;
-                default:
-                    mainView.printErrorMessage();
-                    break;
+            int selectNum = mainException.solveInputValueException(SCANNER.nextLine());
+
+            // 1. 5초 이용
+            if (selectNum == 1) {
+                continue;
+            }
+            // 2. 10초 이용
+            if (selectNum == 2) {
+                continue;
+            }
+            // 0. 마을로 돌아가기
+            if (selectNum == 0) {
+                mainView.printBackTownMessage();
+                return;
+            }
+            // 에러
+            if (selectNum == -1) {
+                mainView.printErrorMessage();
             }
         }
     }
