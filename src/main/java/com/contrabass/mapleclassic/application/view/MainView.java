@@ -2,7 +2,7 @@ package com.contrabass.mapleclassic.application.view;
 
 public class MainView {
     public void printStartView() {
-        System.out.println("로딩 중...");
+        System.out.println("로딩 중...\n. . .\n");
         System.out.println("로그인이 필요합니다.");
     }
 
@@ -15,17 +15,48 @@ public class MainView {
     }
 
     public void printSuccessLoginView() {
-        System.out.println("로그인 성공!");
-        System.out.println("=====Maple World=====");
-        System.out.println("메인으로 이동 중...");
+        System.out.println("로그인 성공!\n");
+        System.out.println("===============Maple World===============");
+        System.out.println("\n로비로 이동 중...\n. . .\n");
+        System.out.println("========== 로비 입장 ==========\n");
     }
 
-    public void printMainPage(String nickName, int level, String job) {
-        System.out.println("==========메인 화면==========");
-        System.out.println(nickName + " 님의 정보");
-        System.out.println("닉네임 : " + nickName);
-        System.out.println("LEVEL : " + level);
-        System.out.println("직업 : " + job);
+    public void printLobby() {
+        System.out.println("========== 로비 ==========");
+        System.out.println("1. 내 정보");
+        System.out.println("2. 마을 이동");
+        System.out.println("0. 게임 종료");
+        System.out.println("메뉴 번호 입력: ");
+    }
+
+    public void printMapMovement() {
+        System.out.println("===== 이동할 마을을 선택하세요 =====");
+        System.out.println("1. 헤네시스 (레벨 1 이상 입장 가능)");
+        System.out.println("2. 커닝시티 (레벨 11 이상 입장 가능)");
+        System.out.println("3. 페리온 (레벨 21 이상 입장 가능)");
+        System.out.println("4. 엘리니아 (레벨 31 이상 입장 가능)");
+        System.out.println("0. 로비로 가기");
+        System.out.println("메뉴 번호 입력: ");
+    }
+
+    public void printSelectTownMessage() {
+        System.out.println("\n마을 선택으로 돌아갑니다...\n");
+    }
+
+    public void printBackTownMessage() {
+        System.out.println("\n마을로 돌아갑니다...\n");
+    }
+
+    public void printLobbyMessage() {
+        System.out.println("\n로비로 돌아갑니다...\n");
+    }
+
+    public void printErrorMessage() {
+        System.out.println("\n잘못 입력하셨습니다. 다시 입력해 주세요.\n");
+    }
+
+    public void printEndMessage() {
+        System.out.println("\n게임을 종료합니다...\n");
     }
 
 

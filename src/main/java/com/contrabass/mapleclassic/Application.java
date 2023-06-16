@@ -6,6 +6,7 @@ import static com.contrabass.mapleclassic.Constant.CONTEXT;
 
 public class Application {
     public static void main(String[] args) {
-        CONTEXT.getBean("gameController", GameController.class).run();
+        CONTEXT.getBean("gameController",
+                GameController.class).run();
     }
 }

@@ -1,29 +1,16 @@
-package com.contrabass.mapleclassic;
+package com.contrabass.mapleclassic.utils.contextconfiguration;
 
-
-import com.contrabass.mapleclassic.application.controller.GameController;
-import com.contrabass.mapleclassic.application.view.MainView;
 import com.contrabass.mapleclassic.application.view.UserView;
 import com.contrabass.mapleclassic.domain.entity.UserDTO;
 import com.contrabass.mapleclassic.domain.repository.UserRepository;
+import com.contrabass.mapleclassic.domain.service.UserDomainService;
 import com.contrabass.mapleclassic.infra.UserDB;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Scope;
 
 @Configuration
-public class ContextConfiguration {
-    @Bean
-    @Scope("prototype")
-    public GameController gameController() {
-        return new GameController();
-    }
-
-    @Bean
-    public MainView mainView() {
-        return new MainView();
-    }
-
+public class UserContextConfiguration {
     @Bean
     public UserView userView() {
         return new UserView();
@@ -37,6 +24,12 @@ public class ContextConfiguration {
     @Bean
     public UserDB userDB() {
         return new UserDB();
+    }
+
+    @Bean
+    @Scope("prototype")
+    public UserDomainService userDomainService() {
+        return new UserDomainService();
     }
 
     @Bean
