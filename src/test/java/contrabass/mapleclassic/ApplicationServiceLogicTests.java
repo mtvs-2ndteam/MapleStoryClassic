@@ -20,7 +20,7 @@ public class ApplicationServiceLogicTests {
         this.mainException = CONTEXT.getBean("mainException",
                 MainException.class);
     }
-    
+
     @DisplayName("0~9 범위를 벗어나는 값 입력 시 예외 발생 테스트")
     @Test
     public void inputExceptionTest1() {
@@ -69,6 +69,17 @@ public class ApplicationServiceLogicTests {
     @Test
     public void inputExceptionTest5() {
         String input = "08";
+
+        Assertions.assertThrows(
+                IllegalArgumentException.class,
+                () -> mainException.validateInputValue(input)
+        );
+    }
+
+    @DisplayName("실수 입력 시 예외 발생 테스트")
+    @Test
+    public void inputExceptionTest6() {
+        String input = "0.1";
 
         Assertions.assertThrows(
                 IllegalArgumentException.class,
