@@ -45,9 +45,7 @@ public class MapController {
                 return;
             }
             // 에러
-            if (selectNum == -1) {
-                mainView.printErrorMessage();
-            }
+            mainView.printErrorMessage();
         }
     }
 
@@ -82,9 +80,7 @@ public class MapController {
                 return;
             }
             // 에러
-            if (selectNum == -1) {
-                mainView.printErrorMessage();
-            }
+            mainView.printErrorMessage();
         }
     }
 
@@ -119,9 +115,7 @@ public class MapController {
                 return;
             }
             // 에러
-            if (selectNum == -1) {
-                mainView.printErrorMessage();
-            }
+            mainView.printErrorMessage();
         }
     }
 
@@ -156,9 +150,7 @@ public class MapController {
                 return;
             }
             // 에러
-            if (selectNum == -1) {
-                mainView.printErrorMessage();
-            }
+            mainView.printErrorMessage();
         }
     }
 
@@ -183,9 +175,7 @@ public class MapController {
                 return;
             }
             // 에러
-            if (selectNum == -1) {
-                mainView.printErrorMessage();
-            }
+            mainView.printErrorMessage();
         }
     }
 
@@ -210,9 +200,7 @@ public class MapController {
                 return;
             }
             // 에러
-            if (selectNum == -1) {
-                mainView.printErrorMessage();
-            }
+            mainView.printErrorMessage();
         }
     }
 }

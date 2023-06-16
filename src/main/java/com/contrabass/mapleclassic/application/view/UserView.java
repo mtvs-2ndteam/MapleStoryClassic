@@ -8,11 +8,17 @@ public class UserView {
     }
 
     public void printUserInfo(String nickName, int level, String job) {
-        System.out.println(nickName + "  Lv." + level + "  " + job + "\nHP: 1000" + " MP: 1000");
+        System.out.println(nickName + "  Lv." + level + "  " + job + "\nHP: 1000" + "\nMP: 1000");
+    }
+
+    public void printUserDetailInfo(String nickName, int level, String job) {
+        System.out.println(nickName + "  Lv." + level + "  " + job
+                + "\nHP: 1000" + "\nMP: 1000"
+                + "\n공격력: 1000" + " 크리티컬 확률: 90% " + " 크리티컬 데미지: 20%");
     }
 
     public void printSelectMyInfo() {
-        printUserInfo("뭐함", userLevel, "마법사");
+        printUserDetailInfo("뭐함", userLevel, "마법사");
         System.out.println("=========== 내 정보 ===========");
         System.out.println("1. 스텟 찍기");
         System.out.println("0. 로비로 가기");
