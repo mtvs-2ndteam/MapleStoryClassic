@@ -78,10 +78,10 @@ public class GameController {
             mainView.printMapMovement();
             int selectNum = mainException.solveInputValueException(SCANNER.nextLine());
 
-            // 1. 헤네시스(레벨 1 이상)
-            // 2. 커닝시티(레벨 11 이상)
-            // 3. 페리온(레벨 21 이상)
-            // 4. 엘리니아(레벨 31 이상)
+            // 1. 헤네시스(레벨 1 이상 입장 가능)
+            // 2. 커닝시티(레벨 11 이상 입장 가능)
+            // 3. 페리온(레벨 21 이상 입장 가능)
+            // 4. 엘리니아(레벨 31 이상 입장 가능)
             if (selectNum == 1
                     || selectNum == 2
                     || selectNum == 3
