@@ -1,5 +1,7 @@
 package contrabass.mapleclassic;
 
+import com.contrabass.mapleclassic.application.controller.GameController;
+import com.contrabass.mapleclassic.application.view.MainView;
 import com.contrabass.mapleclassic.utils.MainException;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
@@ -9,18 +11,24 @@ import org.junit.jupiter.api.Test;
 import static com.contrabass.mapleclassic.Constant.CONTEXT;
 
 public class ApplicationServiceLogicTests {
+    private GameController gameController;
+    private MainView mainView;
     private MainException mainException;
 
     @BeforeEach
     public void setUp() {
-        this.mainException = CONTEXT.getBean("mainException",
-                MainException.class);
+        this.gameController = CONTEXT.getBean(
+                "gameController", GameController.class);
+        this.mainView = CONTEXT.getBean(
+                "mainView", MainView.class);
+        this.mainException = CONTEXT.getBean(
+                "mainException", MainException.class);
     }
 
-    @DisplayName("0~9 범위를 벗어나는 값 입력 시 예외 발생 테스트")
+    @DisplayName("음수 입력 시 예외 발생 테스트")
     @Test
     public void inputExceptionTest1() {
-        String input = "11";
+        String input = "-1";
 
         Assertions.assertThrows(
                 IllegalArgumentException.class,
@@ -61,7 +69,7 @@ public class ApplicationServiceLogicTests {
         );
     }
 
-    @DisplayName("0을 십의 자리에 사용한 값 입력 시 예외 발생 테스트")
+    @DisplayName("0을 맨 앞에 사용한 값 입력 시 예외 발생 테스트")
     @Test
     public void inputExceptionTest5() {
         String input = "08";
