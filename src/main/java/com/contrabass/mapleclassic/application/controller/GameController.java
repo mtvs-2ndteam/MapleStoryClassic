@@ -10,10 +10,12 @@ import static com.contrabass.mapleclassic.Constant.SCANNER;
 
 @Controller
 public class GameController {
-    MainView mainView = CONTEXT.getBean("mainView", MainView.class);
+    MapController mapController = CONTEXT.getBean("mapController", MapController.class);
     MainException mainException = CONTEXT.getBean("mainException", MainException.class);
+    MainView mainView = CONTEXT.getBean("mainView", MainView.class);
     UserView userView = CONTEXT.getBean("userView", UserView.class);
 
+    ///// 로비 /////
     public void run() {
         mainView.printStartView();
         mainView.printLoginIdView();
@@ -21,14 +23,15 @@ public class GameController {
         mainView.printSuccessLoginView();
         while (true) {
             userView.printUserInfo("뭐함", 10, "마법사");
-            mainView.printMainPage();
+            mainView.printLobby();
             switch (mainException.solveInputValueException(SCANNER.nextLine())) {
                 case 1: // 내 정보
+                    selectMyInfo();
                     break;
-                case 2:
+                case 2: // 마을 이동
                     selectMaps();
                     break;
-                case 0:
+                case 0: // 게임 종료
                     mainView.printEndMessage();
                     return;
                 default:
@@ -38,20 +41,15 @@ public class GameController {
         }
     }
 
-    public void selectMaps() {
+    ///// 내 정보 /////
+    public void selectMyInfo() {
         while (true) {
-            mainView.printMapMovement();
+            userView.printSelectMyInfo();
             switch (mainException.solveInputValueException(SCANNER.nextLine())) {
-                case 1: // 헤네시스
+                case 1: // 스텟 찍기
                     break;
-                case 2: // 커닝시티
-                    break;
-                case 3: // 페리온
-                    break;
-                case 4: // 엘리니아
-                    break;
-                case 0:
-                    mainView.printBackMessage();
+                case 0: // 로비
+                    mainView.printLobbyMessage();
                     return;
                 default:
                     mainView.printErrorMessage();
@@ -60,4 +58,30 @@ public class GameController {
         }
     }
 
+    ///// 마을 이동 /////
+    public void selectMaps() {
+        while (true) {
+            mainView.printMapMovement();
+            switch (mainException.solveInputValueException(SCANNER.nextLine())) {
+                case 1: // 헤네시스 (레벨 1~10 입장 가능)
+                    mapController.selectHenesys();
+                    break;
+                case 2: // 커닝시티 (레벨 11~20 입장 가능)
+                    mapController.selectKerningCity();
+                    break;
+                case 3: // 페리온 (레벨 21~30 입장 가능)
+                    mapController.selectPerion();
+                    break;
+                case 4: // 엘리니아 (레벨 31~ 입장 가능)
+                    mapController.selectEllinia();
+                    break;
+                case 0: // 로비
+                    mainView.printLobbyMessage();
+                    return;
+                default:
+                    mainView.printErrorMessage();
+                    break;
+            }
+        }
+    }
 }
