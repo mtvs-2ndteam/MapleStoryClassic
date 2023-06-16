@@ -20,17 +20,56 @@ public class ApplicationServiceLogicTests {
         this.mainException = CONTEXT.getBean("mainException",
                 MainException.class);
     }
-
-    @DisplayName("게임을 실행하는 테스트")
+    
+    @DisplayName("0~9 범위를 벗어나는 값 입력 시 예외 발생 테스트")
     @Test
-    public void executeGameTest() {
-        
+    public void inputExceptionTest1() {
+        String input = "11";
+
+        Assertions.assertThrows(
+                IllegalArgumentException.class,
+                () -> mainException.validateInputValue(input)
+        );
     }
 
-    @DisplayName("0~9 정수 이외의 값 입력 시 예외 발생하는 테스트")
+    @DisplayName("문자 입력 시 예외 발생 테스트")
     @Test
-    public void inputExceptionTest() {
-        String input = "98";
+    public void inputExceptionTest2() {
+        String input = "!@";
+
+        Assertions.assertThrows(
+                IllegalArgumentException.class,
+                () -> mainException.validateInputValue(input)
+        );
+    }
+
+    @DisplayName("알파벳 입력 시 예외 발생 테스트")
+    @Test
+    public void inputExceptionTest3() {
+        String input = "Ab";
+
+        Assertions.assertThrows(
+                IllegalArgumentException.class,
+                () -> mainException.validateInputValue(input)
+        );
+    }
+
+    @DisplayName("공백 입력 시 예외 발생 테스트")
+    @Test
+    public void inputExceptionTest4() {
+        String input = " ";
+
+        Assertions.assertThrows(
+                IllegalArgumentException.class,
+                () -> mainException.validateInputValue(input)
+        );
+    }
+
+    @DisplayName("0을 십의 자리에 사용한 값 입력 시 예외 발생 테스트")
+    @Test
+    public void inputExceptionTest5() {
+        String input = "08";
+
         Assertions.assertThrows(
                 IllegalArgumentException.class,
                 () -> mainException.validateInputValue(input)
