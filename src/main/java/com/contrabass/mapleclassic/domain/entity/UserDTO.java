@@ -8,6 +8,7 @@ import lombok.*;
 @Setter
 @ToString
 public class UserDTO {
+    
     private int userSequence;
     private String userId;
     private String userPw;
