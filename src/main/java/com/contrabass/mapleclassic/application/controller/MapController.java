@@ -14,7 +14,7 @@ public class MapController {
     MainView mainView = CONTEXT.getBean("mainView", MainView.class);
     MapView mapView = CONTEXT.getBean("mapView", MapView.class);
 
-    ///// 헤네시스 (레벨 1~10 입장 가능) /////
+    ///// 헤네시스 (레벨 1 이상 입장 가능) /////
     public void selectHenesys() {
         while (true) {
             mapView.printHenesys();
@@ -30,7 +30,7 @@ public class MapController {
                 case 4: // 보스
                     break;
                 case 0: // 뒤로 가기
-                    mainView.printBackMessage();
+                    mainView.printSelectTownMessage();
                     return;
                 default:
                     mainView.printErrorMessage();
@@ -39,7 +39,7 @@ public class MapController {
         }
     }
 
-    ///// 커닝시티 (레벨 11~20 입장 가능) /////
+    ///// 커닝시티 (레벨 11 이상 입장 가능) /////
     public void selectKerningCity() {
         while (true) {
             mapView.printKerningCity();
@@ -55,7 +55,7 @@ public class MapController {
                 case 4: // 보스
                     break;
                 case 0: // 뒤로 가기
-                    mainView.printBackMessage();
+                    mainView.printSelectTownMessage();
                     return;
                 default:
                     mainView.printErrorMessage();
@@ -64,7 +64,7 @@ public class MapController {
         }
     }
 
-    ///// 페리온 (레벨 21~30 입장 가능) /////
+    ///// 페리온 (레벨 21 이상 입장 가능) /////
     public void selectPerion() {
         while (true) {
             mapView.printPerion();
@@ -80,7 +80,7 @@ public class MapController {
                 case 4: // 보스
                     break;
                 case 0: // 뒤로 가기
-                    mainView.printBackMessage();
+                    mainView.printSelectTownMessage();
                     return;
                 default:
                     mainView.printErrorMessage();
@@ -89,7 +89,7 @@ public class MapController {
         }
     }
 
-    ///// 엘리니아 (레벨 31~ 입장 가능) /////
+    ///// 엘리니아 (레벨 31 이상 입장 가능) /////
     public void selectEllinia() {
         while (true) {
             mapView.printEllinia();
@@ -105,7 +105,7 @@ public class MapController {
                 case 4: // 보스
                     break;
                 case 0: // 뒤로 가기
-                    mainView.printBackMessage();
+                    mainView.printSelectTownMessage();
                     return;
                 default:
                     mainView.printErrorMessage();
@@ -124,7 +124,7 @@ public class MapController {
                 case 2: // MP 포션
                     break;
                 case 0: // 뒤로 가기
-                    mainView.printBackMessage();
+                    mainView.printBackTownMessage();
                     return;
                 default:
                     mainView.printErrorMessage();
@@ -143,7 +143,7 @@ public class MapController {
                 case 2: // 10초 이용
                     break;
                 case 0: // 뒤로 가기
-                    mainView.printBackMessage();
+                    mainView.printBackTownMessage();
                     return;
                 default:
                     mainView.printErrorMessage();

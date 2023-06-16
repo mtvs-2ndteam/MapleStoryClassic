@@ -8,6 +8,7 @@ public class UserView {
     }
 
     public void printSelectMyInfo() {
+        System.out.println("\n내 정보 조회 중...\n");
         System.out.println("=========== 내 정보 ===========");
         System.out.println("1. 스텟 찍기");
         System.out.println("0. 로비로 가기");

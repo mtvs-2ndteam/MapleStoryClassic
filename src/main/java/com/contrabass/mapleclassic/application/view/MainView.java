@@ -43,12 +43,16 @@ public class MainView {
         System.out.println("메뉴 번호 입력: ");
     }
 
-    public void printBackMessage() {
-        System.out.println("\n뒤로 갑니다...\n");
+    public void printSelectTownMessage() {
+        System.out.println("\n마을 선택으로 돌아갑니다...\n");
+    }
+
+    public void printBackTownMessage() {
+        System.out.println("\n마을로 돌아갑니다...\n");
     }
 
     public void printLobbyMessage() {
-        System.out.println("\n로비로 갑니다...\n");
+        System.out.println("\n로비로 돌아갑니다...\n");
     }
 
     public void printErrorMessage() {
