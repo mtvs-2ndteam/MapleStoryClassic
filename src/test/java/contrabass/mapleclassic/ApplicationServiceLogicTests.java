@@ -1,6 +1,5 @@
 package contrabass.mapleclassic;
 
-import com.contrabass.mapleclassic.application.controller.GameController;
 import com.contrabass.mapleclassic.utils.MainException;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
@@ -10,13 +9,10 @@ import org.junit.jupiter.api.Test;
 import static com.contrabass.mapleclassic.Constant.CONTEXT;
 
 public class ApplicationServiceLogicTests {
-    private GameController gameController;
     private MainException mainException;
 
     @BeforeEach
     public void setUp() {
-        this.gameController = CONTEXT.getBean("gameController",
-                GameController.class);
         this.mainException = CONTEXT.getBean("mainException",
                 MainException.class);
     }
@@ -80,6 +76,17 @@ public class ApplicationServiceLogicTests {
     @Test
     public void inputExceptionTest6() {
         String input = "0.1";
+
+        Assertions.assertThrows(
+                IllegalArgumentException.class,
+                () -> mainException.validateInputValue(input)
+        );
+    }
+
+    @DisplayName("값을 넣지 않고 엔터를 누를 경우(null) 예외 발생 테스트")
+    @Test
+    public void inputExceptionTest7() {
+        String input = "";
 
         Assertions.assertThrows(
                 IllegalArgumentException.class,
