@@ -18,7 +18,7 @@ public class MainView {
         System.out.println("로그인 성공!\n");
         System.out.println("===============Maple World===============");
         System.out.println("\n로비로 이동 중...\n. . .\n");
-        System.out.println("========== 로비 입장 ==========");
+        System.out.println("========== 로비 입장 ==========\n");
     }
 
     public void printLobby() {
@@ -31,10 +31,10 @@ public class MainView {
 
     public void printMapMovement() {
         System.out.println("===== 이동할 마을을 선택하세요 =====");
-        System.out.println("1. 헤네시스 (레벨 1~10 입장 가능)");
-        System.out.println("2. 커닝시티 (레벨 11~20 입장 가능)");
-        System.out.println("3. 페리온 (레벨 21~30 입장 가능)");
-        System.out.println("4. 엘리니아 (레벨 31~ 입장 가능)");
+        System.out.println("1. 헤네시스 (레벨 1 이상 입장 가능)");
+        System.out.println("2. 커닝시티 (레벨 11 이상 입장 가능)");
+        System.out.println("3. 페리온 (레벨 21 이상 입장 가능)");
+        System.out.println("4. 엘리니아 (레벨 31 이상 입장 가능)");
         System.out.println("0. 로비로 가기");
         System.out.println("메뉴 번호 입력: ");
     }

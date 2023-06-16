@@ -8,9 +8,7 @@ public class UserView {
     }
 
     public void printUserInfo(String nickName, int level, String job) {
-        System.out.println("닉네임 : " + nickName);
-        System.out.println("LEVEL : " + level);
-        System.out.println("직업 : " + job);
+        System.out.println(nickName + "  Lv." + level + "  " + job + "\nHP: 1000" + " MP: 1000");
     }
 
     public void printSelectMyInfo() {

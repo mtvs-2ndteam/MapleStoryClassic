@@ -13,7 +13,6 @@ import static com.contrabass.mapleclassic.Constant.SCANNER;
 @Controller
 public class GameController {
     MainException mainException = CONTEXT.getBean("mainException", MainException.class);
-    MapController mapController = CONTEXT.getBean("mapController", MapController.class);
     GameService gameService = CONTEXT.getBean("gameService", GameService.class);
     MainView mainView = CONTEXT.getBean("mainView", MainView.class);
     MapView mapView = CONTEXT.getBean("mapView", MapView.class);
