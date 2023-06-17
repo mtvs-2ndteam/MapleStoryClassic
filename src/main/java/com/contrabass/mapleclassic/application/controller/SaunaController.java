@@ -1,24 +1,22 @@
 package com.contrabass.mapleclassic.application.controller;
 
 import com.contrabass.mapleclassic.application.service.SaunaService;
-import com.contrabass.mapleclassic.application.view.MainView;
 import com.contrabass.mapleclassic.application.view.SaunaView;
-import com.contrabass.mapleclassic.utils.MainException;
+import com.contrabass.mapleclassic.domain.entity.PlayerDTO;
 
 import static com.contrabass.mapleclassic.Constant.CONTEXT;
 
 public class SaunaController {
     SaunaView saunaView = CONTEXT.getBean("saunaView", SaunaView.class);
-    MainException mainException = CONTEXT.getBean("mainException", MainException.class);
-    MainView mainView = CONTEXT.getBean("mainView", MainView.class);
 
     ///// 프리미엄 사우나 컨트롤러 /////
-    public void returnPremiumSauna(String result) {
+    public void usePremiumSauna(String result, PlayerDTO player) {
         SaunaService saunaService = new SaunaService();
+
         // 성공
         if (result.equals("성공")) {
             saunaView.printPremiumSaunaMessage();
-            saunaService.judgeSauna(5);
+            saunaService.goSauna(5, player, "프리미엄");
             saunaView.printSuccessMessage();
             return;
         }
@@ -27,12 +25,13 @@ public class SaunaController {
     }
 
     ///// 일반 사우나 컨트롤러 /////
-    public void returnNormalSauna(String result) {
+    public void useNormalSauna(String result, PlayerDTO player) {
         SaunaService saunaService = new SaunaService();
+
         // 성공
         if (result.equals("성공")) {
             saunaView.printNormalSaunaMessage();
-            saunaService.judgeSauna(10);
+            saunaService.goSauna(10, player, "일반");
             saunaView.printSuccessMessage();
             return;
         }

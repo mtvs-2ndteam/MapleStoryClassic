@@ -38,7 +38,7 @@ public class MapController {
             }
             // 2. 사우나
             if (selectNum == 2) {
-                selectSauna(map, player.getMeso());
+                selectSauna(player);
                 continue;
             }
             // 3. 사냥터
@@ -90,22 +90,22 @@ public class MapController {
 
 
     ///// 사우나 /////
-    public void selectSauna(String map, int meso) {
+    public void selectSauna(PlayerDTO player) {
         SaunaService saunaService = new SaunaService();
 
         saunaView.printSaunaMessage();
         while (true) {
-            saunaView.printSauna(map);
+            saunaView.printSauna(player);
             int selectNum = mainException.solveInputValueException(SCANNER.nextLine());
 
             // 1. 5초 이용
             if (selectNum == 1) {
-                saunaService.connectPremiumSauna(map, meso);
+                saunaService.connectPremiumSauna(player);
                 continue;
             }
             // 2. 10초 이용
             if (selectNum == 2) {
-                saunaService.connectNormalSauna(map, meso);
+                saunaService.connectNormalSauna(player);
                 continue;
             }
             // 0. 마을로 돌아가기

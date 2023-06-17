@@ -1,7 +1,5 @@
 package contrabass.mapleclassic;
 
-import com.contrabass.mapleclassic.application.controller.GameController;
-import com.contrabass.mapleclassic.application.view.MainView;
 import com.contrabass.mapleclassic.utils.MainException;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
@@ -11,16 +9,10 @@ import org.junit.jupiter.api.Test;
 import static com.contrabass.mapleclassic.Constant.CONTEXT;
 
 public class ApplicationServiceLogicTests {
-    private GameController gameController;
-    private MainView mainView;
     private MainException mainException;
 
     @BeforeEach
     public void setUp() {
-        this.gameController = CONTEXT.getBean(
-                "gameController", GameController.class);
-        this.mainView = CONTEXT.getBean(
-                "mainView", MainView.class);
         this.mainException = CONTEXT.getBean(
                 "mainException", MainException.class);
     }

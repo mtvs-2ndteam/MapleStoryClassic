@@ -83,8 +83,11 @@ public class GameDomainService {
     }
 
     // 사우나 종류에 따른 회복 시간 판단
-    public String recover(int time) {
+    public String recover(int time, PlayerDTO player, int standard) {
         try {
+            player.setMeso(player.getMeso() - standard);
+            player.setBaseHp(player.getMaxHp());
+            player.setBaseMp(player.getMaxMp());
             TimeUnit.SECONDS.sleep(time);
             return "성공";
         } catch (InterruptedException e) {

@@ -32,7 +32,7 @@ public class ShopView {
     }
 
     public void printStatus(PlayerDTO player) {
-        System.out.println("Lv." + player.getLevel() + " 메소: " + player.getMeso()
+        System.out.println(player.getNickName() + "  Lv." + player.getLevel() + "  메소: " + player.getMeso()
                 + "\nHP포션: " + player.getHpPotionCount() + "개"
                 + " MP포션: " + player.getMpPotionCount() + "개");
     }
@@ -40,23 +40,25 @@ public class ShopView {
     public void printShop(PlayerDTO player) {
         System.out.println("=========== 상점 ==========");
         printStatus(player);
-        System.out.println("1. HP 포션 구매/판매");
+        System.out.println("\n1. HP 포션 구매/판매");
         System.out.println("2. MP 포션 구매/판매");
         System.out.println("0. 마을로 돌아가기");
         System.out.println("메뉴 번호 입력: ");
     }
 
     public void printBuyPotion(PlayerDTO player) {
+        System.out.println();
         printStatus(player);
-        System.out.println("== 구매 가격 ==");
+        System.out.println("\n== 구매 가격 ==");
         System.out.println("Lv.1~10 : 1개당 100메소\nLv.11~20 : 1개당 200메소" +
                 "\nLv.21~30 : 1개당 400메소\nLv.31~ : 1개당 800메소");
         System.out.println("구매 개수를 입력하세요(구매 취소는 0 입력):");
     }
 
     public void printSellPotion(PlayerDTO player) {
+        System.out.println();
         printStatus(player);
-        System.out.println("== 판매 가격 ==");
+        System.out.println("\n== 판매 가격 ==");
         System.out.println("Lv.1~10 : 1개당 70메소\nLv.11~20 : 1개당 140메소" +
                 "\nLv.21~30 : 1개당 280메소\nLv.31~ : 1개당 560메소");
         System.out.println("판매 개수를 입력하세요(구매 취소는 0 입력):");

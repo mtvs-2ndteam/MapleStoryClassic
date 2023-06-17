@@ -24,8 +24,8 @@ public class PlayerContextConfiguration {
                 , 50
                 , 30
                 , 30
-                , 20000
-                , 2000
+                , 10000
+                , 1000
                 , 20000
                 , 2000
                 , 10
