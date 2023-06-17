@@ -8,5 +8,6 @@ import java.util.Scanner;
 public class Constant {
     public final static Scanner SCANNER = new Scanner(System.in);
     public final static ApplicationContext CONTEXT =
-            new AnnotationConfigApplicationContext("com.contrabass.mapleclassic");
+            new AnnotationConfigApplicationContext(
+                    "com.contrabass.mapleclassic");
 }

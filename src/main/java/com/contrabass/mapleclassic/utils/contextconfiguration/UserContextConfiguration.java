@@ -2,7 +2,7 @@ package com.contrabass.mapleclassic.utils.contextconfiguration;
 
 import com.contrabass.mapleclassic.application.view.UserView;
 import com.contrabass.mapleclassic.domain.entity.UserDTO;
-import com.contrabass.mapleclassic.domain.repository.UserRepository;
+import com.contrabass.mapleclassic.domain.repository.UserDAO;
 import com.contrabass.mapleclassic.domain.service.UserDomainService;
 import com.contrabass.mapleclassic.infra.UserDB;
 import org.springframework.context.annotation.Bean;
@@ -34,7 +34,7 @@ public class UserContextConfiguration {
 
     @Bean
     @Scope("prototype")
-    public UserRepository userRepository() {
-        return new UserRepository();
+    public UserDAO userDAO() {
+        return new UserDAO();
     }
 }

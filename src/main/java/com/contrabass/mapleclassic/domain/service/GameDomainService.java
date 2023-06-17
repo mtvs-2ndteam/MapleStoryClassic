@@ -2,6 +2,8 @@ package com.contrabass.mapleclassic.domain.service;
 
 import org.springframework.stereotype.Service;
 
+import java.util.concurrent.TimeUnit;
+
 @Service
 public class GameDomainService {
 
@@ -17,5 +19,31 @@ public class GameDomainService {
             return "페리온";
         }
         return "엘리니아";
+    }
+
+    // 포션 개수 유효성 검사
+    public String validatePotionCount(int count, int meso) {
+        if (count == 0) {
+            return "취소";
+        }
+        if (count > 0 && count <= meso) {
+            return "성공";
+        }
+        return "실패";
+    }
+
+    public String judgeMeso(int meso, int standard) {
+        if (meso >= standard) {
+            return "성공";
+        }
+        return "실패";
+    }
+
+    public void recover(int time) {
+        try {
+            TimeUnit.SECONDS.sleep(time);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 }
