@@ -4,6 +4,7 @@ import com.contrabass.mapleclassic.application.service.GameService;
 import com.contrabass.mapleclassic.application.view.MainView;
 import com.contrabass.mapleclassic.application.view.MapView;
 import com.contrabass.mapleclassic.application.view.UserView;
+import com.contrabass.mapleclassic.domain.entity.PlayerDTO;
 import com.contrabass.mapleclassic.utils.MainException;
 import org.springframework.stereotype.Controller;
 
@@ -17,7 +18,7 @@ public class GameController {
     MainView mainView = CONTEXT.getBean("mainView", MainView.class);
     MapView mapView = CONTEXT.getBean("mapView", MapView.class);
     UserView userView = CONTEXT.getBean("userView", UserView.class);
-    int userLevel = 11; // 유저 정보 불러오는 메소드 써야함
+    PlayerDTO player = CONTEXT.getBean("pDTO", PlayerDTO.class);
 
     ///// 로비 /////
     public void run() {
@@ -26,17 +27,19 @@ public class GameController {
         mainView.printLoginPwView();
         mainView.printSuccessLoginView();
         while (true) {
-            userView.printUserInfo("뭐함", userLevel, "마법사");
+            userView.printUserInfo(player);
             mainView.printLobby();
             int selectNum = mainException.solveInputValueException(SCANNER.nextLine());
 
             // 1. 내 정보
             if (selectNum == 1) {
-                selectMyInfo();
+                selectMyInfo(player);
+                continue;
             }
             // 2. 마을 이동
             if (selectNum == 2) {
-                selectMaps();
+                selectMaps(player);
+                continue;
             }
             // 0. 게임 종료
             if (selectNum == 0) {
@@ -49,10 +52,10 @@ public class GameController {
     }
 
     ///// 내 정보 /////
-    public void selectMyInfo() {
+    public void selectMyInfo(PlayerDTO player) {
         userView.printMyInfoMessage();
         while (true) {
-            userView.printSelectMyInfo();
+            userView.printSelectMyInfo(player);
             int selectNum = mainException.solveInputValueException(SCANNER.nextLine());
 
             // 1. 스텟 찍기
@@ -70,7 +73,7 @@ public class GameController {
     }
 
     ///// 마을 이동 /////
-    public void selectMaps() {
+    public void selectMaps(PlayerDTO playerDTO) {
         mapView.printSelectMapsMessage();
         while (true) {
             mainView.printMapMovement();
@@ -84,10 +87,9 @@ public class GameController {
                     || selectNum == 2
                     || selectNum == 3
                     || selectNum == 4) {
-                gameService.selectMaps(selectNum, userLevel);
+                gameService.selectMaps(selectNum, this.player);
                 continue;
             }
-
             // 0. 로비
             if (selectNum == 0) {
                 mainView.printLobbyMessage();

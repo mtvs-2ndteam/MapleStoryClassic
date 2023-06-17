@@ -11,6 +11,10 @@ import java.util.ArrayList;
 @AllArgsConstructor
 @ToString
 public class PlayerDTO {
+    private String nickName;
+    private String job;
+    private int hpPotionCount;
+    private int mpPotionCount;
     private int level;
     private int baseHp;
     private int baseMp;

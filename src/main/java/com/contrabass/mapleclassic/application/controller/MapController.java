@@ -6,6 +6,7 @@ import com.contrabass.mapleclassic.application.view.MainView;
 import com.contrabass.mapleclassic.application.view.MapView;
 import com.contrabass.mapleclassic.application.view.SaunaView;
 import com.contrabass.mapleclassic.application.view.ShopView;
+import com.contrabass.mapleclassic.domain.entity.PlayerDTO;
 import com.contrabass.mapleclassic.utils.MainException;
 import org.springframework.stereotype.Controller;
 
@@ -19,136 +20,25 @@ public class MapController {
     MapView mapView = CONTEXT.getBean("mapView", MapView.class);
     ShopView shopView = CONTEXT.getBean("shopView", ShopView.class);
     SaunaView saunaView = CONTEXT.getBean("saunaView", SaunaView.class);
-    String mapName = "";
 
     ///// 헤네시스 (레벨 1 이상 입장 가능) /////
-    public void selectHenesys() {
-        mapName = "헤네시스";
-
-        mapView.printHenesysMessage();
-        while (true) {
-            mapView.printHenesys();
-            int selectNum = mainException.solveInputValueException(SCANNER.nextLine());
-
-            // 1. 상점
-            if (selectNum == 1) {
-                selectShop(mapName);
-                continue;
-            }
-            // 2. 사우나
-            if (selectNum == 2) {
-                selectSauna(mapName);
-                continue;
-            }
-            // 3. 사냥터
-            if (selectNum == 3) {
-                continue;
-            }
-            // 4. 보스
-            if (selectNum == 4) {
-                continue;
-            }
-            // 0. 마을 선택으로 돌아가기
-            if (selectNum == 0) {
-                mainView.printSelectTownMessage();
-                return;
-            }
-            // 에러
-            mainView.printErrorMessage();
-        }
-    }
-
     ///// 커닝시티 (레벨 11 이상 입장 가능) /////
-    public void selectKerningCity() {
-        mapName = "커닝시티";
-
-        mapView.printKerningCityMessage();
-        while (true) {
-            mapView.printKerningCity();
-            int selectNum = mainException.solveInputValueException(SCANNER.nextLine());
-
-            // 1. 상점
-            if (selectNum == 1) {
-                selectShop(mapName);
-                continue;
-            }
-            // 2. 사우나
-            if (selectNum == 2) {
-                selectSauna(mapName);
-                continue;
-            }
-            // 3. 사냥터
-            if (selectNum == 3) {
-                continue;
-            }
-            // 4. 보스
-            if (selectNum == 4) {
-                continue;
-            }
-            // 0. 마을 선택으로 돌아가기
-            if (selectNum == 0) {
-                mainView.printSelectTownMessage();
-                return;
-            }
-            // 에러
-            mainView.printErrorMessage();
-        }
-    }
-
     ///// 페리온 (레벨 21 이상 입장 가능) /////
-    public void selectPerion() {
-        mapName = "페리온";
-
-        mapView.printPerionMessage();
-        while (true) {
-            mapView.printPerion();
-            int selectNum = mainException.solveInputValueException(SCANNER.nextLine());
-
-            // 1. 상점
-            if (selectNum == 1) {
-                selectShop(mapName);
-                continue;
-            }
-            // 2. 사우나
-            if (selectNum == 2) {
-                selectSauna(mapName);
-                continue;
-            }
-            // 3. 사냥터
-            if (selectNum == 3) {
-                continue;
-            }
-            // 4. 보스
-            if (selectNum == 4) {
-                continue;
-            }
-            // 0. 마을 선택으로 돌아가기
-            if (selectNum == 0) {
-                mainView.printSelectTownMessage();
-                return;
-            }
-            // 에러
-            mainView.printErrorMessage();
-        }
-    }
-
     ///// 엘리니아 (레벨 31 이상 입장 가능) /////
-    public void selectEllinia() {
-        mapName = "엘리니아";
-
-        mapView.printElliniaMessage();
+    public void selectMap(String map, PlayerDTO player) {
+        mapView.printEnterMapMessage(map);
         while (true) {
-            mapView.printEllinia();
+            mapView.printMenu(map);
             int selectNum = mainException.solveInputValueException(SCANNER.nextLine());
 
             // 1. 상점
             if (selectNum == 1) {
-                selectShop(mapName);
+                selectShop(player);
                 continue;
             }
             // 2. 사우나
             if (selectNum == 2) {
-                selectSauna(mapName);
+                selectSauna(map, player.getMeso());
                 continue;
             }
             // 3. 사냥터
@@ -170,22 +60,22 @@ public class MapController {
     }
 
     ///// 상점 /////
-    public void selectShop(String mapName) {
+    public void selectShop(PlayerDTO player) {
         ShopService shopService = new ShopService();
 
         shopView.printShopMessage();
         while (true) {
-            shopView.printShop();
+            shopView.printShop(player);
             int selectNum = mainException.solveInputValueException(SCANNER.nextLine());
 
             // 1. HP 물약
             if (selectNum == 1) {
-                shopService.connectHpShops(mapName);
+                shopService.connectHpShops(player);
                 continue;
             }
             // 2. MP 물약
             if (selectNum == 2) {
-                shopService.connectMpShops(mapName);
+                shopService.connectMpShops(player);
                 continue;
             }
             // 0. 마을로 돌아가기
@@ -200,22 +90,22 @@ public class MapController {
 
 
     ///// 사우나 /////
-    public void selectSauna(String mapName) {
+    public void selectSauna(String map, int meso) {
         SaunaService saunaService = new SaunaService();
 
         saunaView.printSaunaMessage();
         while (true) {
-            saunaView.printSauna(mapName);
+            saunaView.printSauna(map);
             int selectNum = mainException.solveInputValueException(SCANNER.nextLine());
 
             // 1. 5초 이용
             if (selectNum == 1) {
-                saunaService.connectPremiumSauna(mapName, 1000);
+                saunaService.connectPremiumSauna(map, meso);
                 continue;
             }
             // 2. 10초 이용
             if (selectNum == 2) {
-                saunaService.connectNormalSauna(mapName, 1000);
+                saunaService.connectNormalSauna(map, meso);
                 continue;
             }
             // 0. 마을로 돌아가기
@@ -228,12 +118,4 @@ public class MapController {
         }
     }
 
-    public void judgeSauna(String result) {
-        if (result.equals("성공")) {
-
-        }
-        if (result.equals("실패")) {
-            saunaView.printFailMessage();
-        }
-    }
 }

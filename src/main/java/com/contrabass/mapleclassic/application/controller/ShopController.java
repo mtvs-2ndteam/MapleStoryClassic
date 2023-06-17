@@ -3,6 +3,7 @@ package com.contrabass.mapleclassic.application.controller;
 import com.contrabass.mapleclassic.application.service.ShopService;
 import com.contrabass.mapleclassic.application.view.MainView;
 import com.contrabass.mapleclassic.application.view.ShopView;
+import com.contrabass.mapleclassic.domain.entity.PlayerDTO;
 import com.contrabass.mapleclassic.utils.MainException;
 import org.springframework.stereotype.Controller;
 
@@ -16,18 +17,23 @@ public class ShopController {
     MainView mainView = CONTEXT.getBean("mainView", MainView.class);
 
     ///// HP 포션 컨트롤러 /////
-    public void selectHpShop(String mapName) {
+    public void selectHpShop(PlayerDTO player) {
         while (true) {
             shopView.printHpPotionMessage();
             int selectNum = mainException.solveInputValueException(SCANNER.nextLine());
 
             // 1. 구매하기
             if (selectNum == 1) {
-                buyPotion(8000, mapName);
+                buyPotion(player, "HP");
                 return;
             }
-            // 2. 취소
+            // 2. 판매하기
             if (selectNum == 2) {
+                sellPotion(player, "HP");
+                return;
+            }
+            // 0. 취소
+            if (selectNum == 0) {
                 mainView.printCancelMessage();
                 return;
             }
@@ -37,18 +43,23 @@ public class ShopController {
     }
 
     ///// MP 포션 컨트롤러 /////
-    public void selectMpShop(String mapName) {
+    public void selectMpShop(PlayerDTO player) {
         while (true) {
             shopView.printMpPotionMessage();
             int selectNum = mainException.solveInputValueException(SCANNER.nextLine());
 
             // 1. 구매하기
             if (selectNum == 1) {
-                buyPotion(8000, mapName);
+                buyPotion(player, "MP");
                 return;
             }
-            // 2. 취소
+            // 2. 판매하기
             if (selectNum == 2) {
+                sellPotion(player, "MP");
+                return;
+            }
+            // 0. 취소
+            if (selectNum == 0) {
                 mainView.printCancelMessage();
                 return;
             }
@@ -58,21 +69,67 @@ public class ShopController {
     }
 
     // 포션 구매
-    public void buyPotion(int meso, String mapName) {
+    public void buyPotion(PlayerDTO player, String type) {
         ShopService shopService = new ShopService();
+        String result = "";
+
         while (true) {
-            shopView.printBuyPotion(meso, mapName);
-            int selectNum = mainException.solveInputValueException(SCANNER.nextLine());
-            String result = shopService.inputPotionCount(selectNum, meso, mapName);
+            shopView.printBuyPotion(player);
+            int wantCount = mainException.solveInputValueException(SCANNER.nextLine());
+
+            // 포션 종류별 계산
+            if (type.equals("HP")) {
+                result = shopService.buyHpPotionCountService(wantCount, player);
+            }
+            if (type.equals("MP")) {
+                result = shopService.buyMpPotionCountService(wantCount, player);
+            }
 
             // 구매 성공
             if (result.equals("성공")) {
-                shopView.printSuccessMessage();
+                shopView.printBuySuccessMessage();
                 return;
             }
             // 실패
             if (result.equals("실패")) {
-                shopView.printFailMessage();
+                shopView.printBuyFailMessage();
+                continue;
+            }
+            // 취소
+            if (result.equals("취소")) {
+                mainView.printCancelMessage();
+                return;
+            }
+            // 에러
+            mainView.printErrorMessage();
+        }
+    }
+
+    // 포션 판매
+    public void sellPotion(PlayerDTO player, String type) {
+        ShopService shopService = new ShopService();
+        String result = "";
+
+        while (true) {
+            shopView.printSellPotion(player);
+            int wantCount = mainException.solveInputValueException(SCANNER.nextLine());
+
+            // 포션 종류별 계산
+            if (type.equals("HP")) {
+                result = shopService.sellHpPotionCountService(wantCount, player);
+            }
+            if (type.equals("MP")) {
+                result = shopService.sellMpPotionCountService(wantCount, player);
+            }
+
+            // 판매 성공
+            if (result.equals("성공")) {
+                shopView.printSellSuccessMessage();
+                return;
+            }
+            // 실패
+            if (result.equals("실패")) {
+                shopView.printSellFailMessage();
                 continue;
             }
             // 취소

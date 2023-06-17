@@ -1,6 +1,7 @@
 package com.contrabass.mapleclassic.application.service;
 
 import com.contrabass.mapleclassic.application.controller.ShopController;
+import com.contrabass.mapleclassic.domain.entity.PlayerDTO;
 import com.contrabass.mapleclassic.domain.service.GameDomainService;
 import org.springframework.stereotype.Service;
 
@@ -12,29 +13,80 @@ public class ShopService {
     GameDomainService gameDomainService = CONTEXT.getBean("gameDomainService", GameDomainService.class);
 
 
-    // 마을 종류에 따른 hp 상점 연결
-    public void connectHpShops(String mapName) {
-        shopController.selectHpShop(mapName);
+    // HP 상점 연결
+    public void connectHpShops(PlayerDTO player) {
+        shopController.selectHpShop(player);
     }
 
-    // 마을 종류에 따른 mp 상점 연결
-    public void connectMpShops(String mapName) {
-        shopController.selectMpShop(mapName);
+    // MP 상점 연결
+    public void connectMpShops(PlayerDTO player) {
+        shopController.selectMpShop(player);
     }
 
-    // 포션 개수 유효성 검사 로직 연결
-    public String inputPotionCount(int count, int meso, String mapName) {
-        if (mapName.equals("헤네시스")) {
-            return gameDomainService.validatePotionCount(count * 100, meso);
+    // HP 포션 구매 로직 연결
+    public String buyHpPotionCountService(int wantCount, PlayerDTO player) {
+        if (player.getLevel() > 0 && player.getLevel() < 11) {
+            return gameDomainService.buyHpPotionCount(wantCount, player, 100);
         }
-        if (mapName.equals("커닝시티")) {
-            return gameDomainService.validatePotionCount(count * 200, meso);
+        if (player.getLevel() > 10 && player.getLevel() < 21) {
+            return gameDomainService.buyHpPotionCount(wantCount, player, 200);
         }
-        if (mapName.equals("페리온")) {
-            return gameDomainService.validatePotionCount(count * 400, meso);
+        if (player.getLevel() > 20 && player.getLevel() < 31) {
+            return gameDomainService.buyHpPotionCount(wantCount, player, 400);
         }
-        if (mapName.equals("엘리니아")) {
-            return gameDomainService.validatePotionCount(count * 800, meso);
+        if (player.getLevel() > 30) {
+            return gameDomainService.buyHpPotionCount(wantCount, player, 800);
+        }
+        return "에러";
+    }
+
+    // MP 포션 구매 로직 연결
+    public String buyMpPotionCountService(int wantCount, PlayerDTO player) {
+        if (player.getLevel() > 0 && player.getLevel() < 11) {
+            return gameDomainService.buyMpPotionCount(wantCount, player, 100);
+        }
+        if (player.getLevel() > 10 && player.getLevel() < 21) {
+            return gameDomainService.buyMpPotionCount(wantCount, player, 200);
+        }
+        if (player.getLevel() > 20 && player.getLevel() < 31) {
+            return gameDomainService.buyMpPotionCount(wantCount, player, 400);
+        }
+        if (player.getLevel() > 30) {
+            return gameDomainService.buyMpPotionCount(wantCount, player, 800);
+        }
+        return "에러";
+    }
+
+    // HP 포션 판매 로직 연결
+    public String sellHpPotionCountService(int wantCount, PlayerDTO player) {
+        if (player.getLevel() > 0 && player.getLevel() < 11) {
+            return gameDomainService.sellHpPotionCount(wantCount, player, 70);
+        }
+        if (player.getLevel() > 10 && player.getLevel() < 21) {
+            return gameDomainService.sellHpPotionCount(wantCount, player, 140);
+        }
+        if (player.getLevel() > 20 && player.getLevel() < 31) {
+            return gameDomainService.sellHpPotionCount(wantCount, player, 280);
+        }
+        if (player.getLevel() > 30) {
+            return gameDomainService.sellHpPotionCount(wantCount, player, 560);
+        }
+        return "에러";
+    }
+
+    // MP 포션 판매 로직 연결
+    public String sellMpPotionCountService(int wantCount, PlayerDTO player) {
+        if (player.getLevel() > 0 && player.getLevel() < 11) {
+            return gameDomainService.sellMpPotionCount(wantCount, player, 70);
+        }
+        if (player.getLevel() > 10 && player.getLevel() < 21) {
+            return gameDomainService.sellMpPotionCount(wantCount, player, 140);
+        }
+        if (player.getLevel() > 20 && player.getLevel() < 31) {
+            return gameDomainService.sellMpPotionCount(wantCount, player, 280);
+        }
+        if (player.getLevel() > 30) {
+            return gameDomainService.sellMpPotionCount(wantCount, player, 560);
         }
         return "에러";
     }
