@@ -52,4 +52,26 @@ public class DomainLogicTests {
         Assertions.assertEquals("엘리니아",
                 gameDomainService.judgeLevel(level));
     }
+
+    @DisplayName("메소 부족 테스트")
+    @Test
+    public void lessMesoTest() {
+        int meso = 3500;
+        int standard = 4000;
+
+        Assertions.assertEquals("실패",
+                gameDomainService.judgeMeso(meso, standard));
+    }
+
+    @DisplayName("사우나 종류에 따른 회복 시간 테스트")
+    @Test
+    public void recoverTest() {
+        int time = 5;
+        int time2 = 10;
+
+        Assertions.assertEquals("성공",
+                gameDomainService.recover(time));
+        Assertions.assertEquals("성공",
+                gameDomainService.recover(time2));
+    }
 }

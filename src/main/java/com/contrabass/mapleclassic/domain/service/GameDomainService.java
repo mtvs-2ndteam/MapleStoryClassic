@@ -32,6 +32,7 @@ public class GameDomainService {
         return "실패";
     }
 
+    // 메소 부족 판단
     public String judgeMeso(int meso, int standard) {
         if (meso >= standard) {
             return "성공";
@@ -39,11 +40,14 @@ public class GameDomainService {
         return "실패";
     }
 
-    public void recover(int time) {
+    // 사우나 종류에 따른 회복 시간 판단
+    public String recover(int time) {
         try {
             TimeUnit.SECONDS.sleep(time);
+            return "성공";
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
+        return "실패";
     }
 }
