@@ -60,4 +60,7 @@ public class MainView {
     }
 
 
+    public void printCancelMessage() {
+        System.out.println("\n취소했습니다.\n");
+    }
 }

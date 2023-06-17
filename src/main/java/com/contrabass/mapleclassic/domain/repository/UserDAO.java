@@ -9,7 +9,7 @@ import java.util.List;
 import static com.contrabass.mapleclassic.Constant.CONTEXT;
 
 @Repository
-public class UserRepository {
+public class UserDAO {
     UserDB userDB = CONTEXT.getBean("userDB", UserDB.class);
 
     public List<UserDB> selectUser() { // 유저 전체 조회

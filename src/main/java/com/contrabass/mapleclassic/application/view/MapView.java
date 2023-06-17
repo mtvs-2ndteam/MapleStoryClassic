@@ -26,13 +26,6 @@ public class MapView {
         System.out.println("\n엘리니아로 이동...\n");
     }
 
-    public void printShopMessage() {
-        System.out.println("\n상점으로 이동...\n");
-    }
-
-    public void printSaunaMessage() {
-        System.out.println("\n사우나로 이동...\n");
-    }
 
     public void printHenesys() {
         userView.printUserInfo("뭐함", userLevel, "마법사");
@@ -74,22 +67,6 @@ public class MapView {
         System.out.println("1. 상점");
         System.out.println("2. 사우나");
         System.out.println("3. 사냥터 이동");
-    }
-
-    public void printShop() {
-        System.out.println("=========== 상점 ==========");
-        System.out.println("1. HP 포션 구매");
-        System.out.println("2. MP 포션 구매");
-        System.out.println("0. 마을로 돌아가기");
-        System.out.println("메뉴 번호 입력: ");
-    }
-
-    public void printSauna() {
-        System.out.println("========== 사우나 ==========");
-        System.out.println("1. 5초 이용 시 전체 회복 (1000메소)");
-        System.out.println("2. 10초 이용 시 전체 회복 (500메소)");
-        System.out.println("0. 마을로 돌아가기");
-        System.out.println("메뉴 번호 입력: ");
     }
 
     public void printKerningCityError() {
