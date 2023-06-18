@@ -50,6 +50,14 @@ public class MainView {
     public void printLobbyMessage() {
         System.out.println("\n로비로 돌아갑니다...\n");
     }
+    public void printStatusMessage(){
+        System.out.println("1. 공격력");
+        System.out.println("2. 마력");
+        System.out.println("3. 방어력");
+        System.out.println("4. 크리티컬확률");
+        System.out.println("5. 크리티컬데미지");
+        System.out.println("0. 돌아가기");
+    }
 
     public void printErrorMessage() {
         System.out.println("\n잘못 입력하셨습니다. 다시 입력해 주세요.\n");

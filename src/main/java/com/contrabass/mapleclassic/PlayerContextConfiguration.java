@@ -12,7 +12,7 @@ import java.util.ArrayList;
 @Configuration
 public class PlayerContextConfiguration {
     @Bean
-    public PlayerDAO plogic() {
+    public PlayerDAO pDAO() {
         return new PlayerDAO();
     }
 

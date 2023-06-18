@@ -4,12 +4,12 @@ import com.contrabass.mapleclassic.domain.entity.PlayerDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-@Service("oad")
+@Service("pDAO")
 public class PlayerDAO {
     @Autowired
     private PlayerDTO dto;
 
-    void expUp(int exp){
+    public void expUp(int exp){
         if (dto.getBaseExp()+exp >= dto.getMaxExp()) {
             int baseExp=(dto.getBaseExp()+exp)-dto.getMaxExp();
             int MaxExp=dto.getMaxExp()*2;
@@ -30,7 +30,7 @@ public class PlayerDAO {
         return dto;
     }
     
-    void checkStat(){
+    public void checkStat(){
         System.out.println("==========스텟 포인트==========");
         System.out.println("|공격력 \t\t\t\t\t"+dto.getAtk()+"\t|");
         System.out.println("|마력 \t\t\t\t\t"+dto.getMAtk()+"\t|");
@@ -41,7 +41,7 @@ public class PlayerDAO {
         System.out.println("=============================");
     }
 
-    String insertStat(int num,int statNum){
+    public String insertStat(int num,int statNum){
         String msg="";
 
         if(statNum==0){ //사용할 포인트

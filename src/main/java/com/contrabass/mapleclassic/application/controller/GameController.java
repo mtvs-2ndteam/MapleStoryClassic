@@ -5,6 +5,8 @@ import com.contrabass.mapleclassic.application.view.MainView;
 import com.contrabass.mapleclassic.application.view.MapView;
 import com.contrabass.mapleclassic.application.view.UserView;
 import com.contrabass.mapleclassic.domain.entity.PlayerDTO;
+import com.contrabass.mapleclassic.domain.repository.PlayerDAO;
+import com.contrabass.mapleclassic.domain.repository.SkillDAO;
 import com.contrabass.mapleclassic.utils.MainException;
 import org.springframework.stereotype.Controller;
 
@@ -19,6 +21,10 @@ public class GameController {
     MapView mapView = CONTEXT.getBean("mapView", MapView.class);
     UserView userView = CONTEXT.getBean("userView", UserView.class);
     PlayerDTO player = CONTEXT.getBean("pDTO", PlayerDTO.class);
+
+    PlayerDAO playerDAO=CONTEXT.getBean("pDAO",PlayerDAO.class);
+
+    SkillDAO skillDAO=CONTEXT.getBean("skillDAO",SkillDAO.class);
 
     ///// 로비 /////
     public void run() {
@@ -60,6 +66,8 @@ public class GameController {
 
             // 1. 스텟 찍기
             if (selectNum == 1) {
+                playerDAO.checkStat();
+                mainView.printStatusMessage();
                 continue;
             }
             // 0. 로비
