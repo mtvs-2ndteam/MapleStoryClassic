@@ -44,8 +44,18 @@ public class FightService {
     public AttackInfoDTO playerMonsterFight(CloneMonsterDTO cloneMonsterDTO) {
         int monsterHitDamage = fightDomainService.playerAttack(cloneMonsterDTO);
         int playerHitDamage = fightDomainService.monsterAttack(cloneMonsterDTO);
-        attackInfoDTO.monsterHitDamage = monsterHitDamage;
-        attackInfoDTO.playerHitDamage = playerHitDamage;
+        attackInfoDTO.setMonsterHitDamage(monsterHitDamage);
+        attackInfoDTO.setPlayerHitDamage(playerHitDamage);
+        attackInfoDTO.isMonsterDie = fightDomainService.checkDie(cloneMonsterDTO);
+        attackInfoDTO.isPlayerDie = fightDomainService.playerCheckDie();
+        return attackInfoDTO;
+    }
+
+    public AttackInfoDTO playerMonsterFight(CloneMonsterDTO cloneMonsterDTO, int skillIndex) {
+        int monsterHitDamage = fightDomainService.playerSkillAttack(cloneMonsterDTO, skillIndex);
+        int playerHitDamage = fightDomainService.monsterAttack(cloneMonsterDTO);
+        attackInfoDTO.setMonsterHitDamage(monsterHitDamage);
+        attackInfoDTO.setPlayerHitDamage(playerHitDamage);
         attackInfoDTO.isMonsterDie = fightDomainService.checkDie(cloneMonsterDTO);
         attackInfoDTO.isPlayerDie = fightDomainService.playerCheckDie();
         return attackInfoDTO;

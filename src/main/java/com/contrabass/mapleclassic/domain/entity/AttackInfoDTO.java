@@ -13,6 +13,6 @@ public class AttackInfoDTO {
     public boolean isPlayerDie = false;
     public boolean isMonsterDie = false;
 
-    public int monsterHitDamage = 0;
-    public int playerHitDamage = 0;
+    private int monsterHitDamage = 0;
+    private int playerHitDamage = 0;
 }
