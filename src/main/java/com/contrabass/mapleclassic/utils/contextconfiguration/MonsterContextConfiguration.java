@@ -60,13 +60,14 @@ public class MonsterContextConfiguration {
     }
 
     @Bean
+    @Qualifier("henesysBoseMonster")
     public MonsterDTO henesysBoseMonster(@Value("${henesys.boss.monster1.name:}") String monsterName,
                                          @Value("${henesys.boss.monster1.level:0}")int monsterLevel,
                                          @Value("${henesys.boss.monster1.hp:0}")int monsterHp,
                                          @Value("${henesys.boss.monster1.power:0}")int monsterPower,
                                          @Value("${henesys.boss.monster1.dropMoney:0}")int monsterDropMoney) {
 
-        return new Zaqqum(monsterName, monsterLevel, monsterHp, monsterPower, monsterDropMoney);
+        return new MonsterDTO(monsterName, monsterLevel, monsterHp, monsterPower, monsterDropMoney);
     }
 
     @Bean

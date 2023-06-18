@@ -28,17 +28,23 @@ public class FightDomainService {
     }
 
     public int playerAttack(CloneMonsterDTO cloneMonsterDTO) {
-        int resultDamage = playerDamageLogic();
+        int resultDamage = playerDamageLogic(playerDTO.getAtk(), playerDTO.getCriPercent(), playerDTO.getCriDamage());
         cloneMonsterDTO.setMonsterHp(cloneMonsterDTO.getMonsterHp() - resultDamage);
         return resultDamage;
     }
 
-    public int playerDamageLogic() {
+    public int playerSkillAttack(CloneMonsterDTO cloneMonsterDTO, int index) {
+        int resultDamage = playerDamageLogic(playerDTO.getSkills().get(index).getSkillDmg(), playerDTO.getCriPercent(), playerDTO.getCriDamage());
+        cloneMonsterDTO.setMonsterHp(cloneMonsterDTO.getMonsterHp() - resultDamage);
+        return resultDamage;
+    }
+
+    public int playerDamageLogic(int atk, int criPercent, int criDamage) {
         temp = r.nextInt(100);
-        if (temp >= 0 && temp < playerDTO.getCriPercent()) {
-            resultDamage = playerDTO.getAtk() * 2 + playerDTO.getAtk() * 2 * playerDTO.getCriDamage() / 100;
+        if (temp >= 0 && temp < criPercent) {
+            resultDamage = atk * 2 + atk * 2 * criDamage / 100;
         } else {
-            resultDamage = playerDTO.getAtk();
+            resultDamage = atk;
         }
 
         return resultDamage;

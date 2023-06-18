@@ -20,22 +20,31 @@ public class FightMapView {
     }
 
     public void selectFightMap() {
-        System.out.println("1~4번 중의 샤낭터를 선택하시오");
+        System.out.println("========== 사냥터 목록 ==========");
+        System.out.println("1. 사냥터 1");
+        System.out.println("2. 사냥터 2");
+        System.out.println("3. 사냥터 3");
+        System.out.println("4. 사냥터 4");
+        run = true;
         while(run){
             switch (SCANNER.nextLine()) {
                 case "1":
+                    fightController.getCloneMonster("henesys", 1);
                     fightView.entryFight(fightController.getCloneMonster("henesys", 1), fightController.getPlayerDTO());
                     run = false;
                     break;
                 case "2":
+                    fightController.getCloneMonster("henesys", 2);
                     fightView.entryFight(fightController.getCloneMonster("henesys", 2), fightController.getPlayerDTO());
                     run = false;
                     break;
                 case "3":
+                    fightController.getCloneMonster("henesys", 3);
                     fightView.entryFight(fightController.getCloneMonster("henesys", 3), fightController.getPlayerDTO());
                     run = false;
                     break;
                 case "4":
+                    fightController.getCloneMonster("henesys", 4);
                     fightView.entryFight(fightController.getCloneMonster("henesys", 4), fightController.getPlayerDTO());
                     run = false;
                     break;

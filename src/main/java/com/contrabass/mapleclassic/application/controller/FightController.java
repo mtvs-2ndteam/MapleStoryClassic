@@ -4,7 +4,6 @@ import com.contrabass.mapleclassic.application.service.FightService;
 import com.contrabass.mapleclassic.domain.entity.AttackInfoDTO;
 import com.contrabass.mapleclassic.domain.entity.CloneMonsterDTO;
 import com.contrabass.mapleclassic.domain.entity.PlayerDTO;
-import com.contrabass.mapleclassic.domain.entity.henesys.normal.MonsterDTO;
 import lombok.Setter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -30,5 +29,9 @@ public class FightController {
 
     public AttackInfoDTO playerMonsterFight(CloneMonsterDTO cloneMonsterDTO) {
         return fightService.playerMonsterFight(cloneMonsterDTO);
+    }
+
+    public AttackInfoDTO playerMonsterFight(CloneMonsterDTO cloneMonsterDTO, int skillIndex) {
+        return fightService.playerMonsterFight(cloneMonsterDTO, skillIndex);
     }
 }
