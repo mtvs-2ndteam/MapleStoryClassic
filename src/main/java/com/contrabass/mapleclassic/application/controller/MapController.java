@@ -1,12 +1,8 @@
 package com.contrabass.mapleclassic.application.controller;
 
-import com.contrabass.mapleclassic.application.view.FightMapView;
+import com.contrabass.mapleclassic.application.view.*;
 import com.contrabass.mapleclassic.application.service.SaunaService;
 import com.contrabass.mapleclassic.application.service.ShopService;
-import com.contrabass.mapleclassic.application.view.MainView;
-import com.contrabass.mapleclassic.application.view.MapView;
-import com.contrabass.mapleclassic.application.view.SaunaView;
-import com.contrabass.mapleclassic.application.view.ShopView;
 import com.contrabass.mapleclassic.domain.entity.PlayerDTO;
 import com.contrabass.mapleclassic.utils.MainException;
 import org.springframework.stereotype.Controller;
@@ -24,6 +20,9 @@ public class MapController {
 
     // 박현섭 작성
     FightMapView fightMapView = CONTEXT.getBean("fightMapView", FightMapView.class);
+
+    // 김지수 작성
+    NpcView npcView = CONTEXT.getBean("npcView", NpcView.class);
 
     ///// 커닝시티 (레벨 11 이상 입장 가능) /////
     ///// 페리온 (레벨 21 이상 입장 가능) /////
@@ -51,6 +50,11 @@ public class MapController {
             }
             // 4. 보스
             if (selectNum == 4) {
+                continue;
+            }
+            // 5. 전직
+            if(selectNum == 5) {
+                selectJob();
                 continue;
             }
             // 0. 마을 선택으로 돌아가기
@@ -110,6 +114,44 @@ public class MapController {
             // 2. 10초 이용
             if (selectNum == 2) {
                 saunaService.connectNormalSauna(player);
+                continue;
+            }
+            // 0. 마을로 돌아가기
+            if (selectNum == 0) {
+                mainView.printBackTownMessage();
+                return;
+            }
+            // 에러
+            mainView.printErrorMessage();
+        }
+    }
+    public void selectJob() {
+
+        PlayerDTO player = new PlayerDTO();
+        npcView.npcSelectView();
+
+        while (true) {
+
+            int selectNum = mainException.solveInputValueException(SCANNER.nextLine());
+
+            // 1. 전사 선택
+            if (selectNum == 1) {
+                npcView.JobSelect(player, 1);
+                continue;
+            }
+            // 2. 마법사 선택
+            if (selectNum == 2) {
+                npcView.JobSelect(player, 2);
+                continue;
+            }
+            // 3. 도적 선택
+            if (selectNum == 3) {
+                npcView.JobSelect(player, 3);
+                continue;
+            }
+            // 4. 궁수 선택
+            if (selectNum == 4) {
+                npcView.JobSelect(player, 4);
                 continue;
             }
             // 0. 마을로 돌아가기
