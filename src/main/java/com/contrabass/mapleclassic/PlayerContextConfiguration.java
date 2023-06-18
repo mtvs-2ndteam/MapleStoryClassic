@@ -9,7 +9,7 @@ import org.springframework.context.annotation.Configuration;
 
 import java.util.ArrayList;
 
-@ComponentScan
+//@ComponentScan
 @Configuration
 public class PlayerContextConfiguration {
     @Bean

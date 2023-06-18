@@ -1,5 +1,6 @@
 package com.contrabass.mapleclassic.application.controller;
 
+import com.contrabass.mapleclassic.application.view.FightMapView;
 import com.contrabass.mapleclassic.application.service.SaunaService;
 import com.contrabass.mapleclassic.application.service.ShopService;
 import com.contrabass.mapleclassic.application.view.MainView;
@@ -21,7 +22,9 @@ public class MapController {
     ShopView shopView = CONTEXT.getBean("shopView", ShopView.class);
     SaunaView saunaView = CONTEXT.getBean("saunaView", SaunaView.class);
 
-    ///// 헤네시스 (레벨 1 이상 입장 가능) /////
+    // 박현섭 작성
+    FightMapView fightMapView = CONTEXT.getBean("fightMapView", FightMapView.class);
+
     ///// 커닝시티 (레벨 11 이상 입장 가능) /////
     ///// 페리온 (레벨 21 이상 입장 가능) /////
     ///// 엘리니아 (레벨 31 이상 입장 가능) /////
@@ -43,6 +46,7 @@ public class MapController {
             }
             // 3. 사냥터
             if (selectNum == 3) {
+                fightMapView.selectFightMap();
                 continue;
             }
             // 4. 보스
