@@ -60,6 +60,21 @@ public class GameService {
             mapView.printEnterError("엘리니아");
         }
     }
+    public void selectJob(int selectNum) {
+
+        if(selectNum == 1) {
+            mapController.selectJob();
+        }
+        if(selectNum == 2) {
+            mapController.selectJob();
+        }
+        if(selectNum == 3) {
+            mapController.selectJob();
+        }
+        if(selectNum == 4) {
+            mapController.selectJob();
+        }
+    }
 
 
 }

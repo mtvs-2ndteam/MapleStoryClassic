@@ -34,6 +34,7 @@ public class MapView {
             System.out.println("=========== 헤네시스 ==========");
             printSelectMenu();
             System.out.println("4. 자쿰(보스) 이동");
+            printSelectNpcMenu();
             System.out.println("0. 마을 선택으로 돌아가기");
             System.out.println("메뉴 번호 입력: ");
         }
@@ -42,6 +43,7 @@ public class MapView {
             System.out.println("=========== 커닝시티 ==========");
             printSelectMenu();
             System.out.println("4. 핑크빈(보스) 이동");
+            printSelectNpcMenu();
             System.out.println("0. 마을 선택으로 돌아가기");
             System.out.println("메뉴 번호 입력: ");
         }
@@ -50,6 +52,7 @@ public class MapView {
             System.out.println("=========== 페리온 ==========");
             printSelectMenu();
             System.out.println("4. 루시드(보스) 이동");
+            printSelectNpcMenu();
             System.out.println("0. 마을 선택으로 돌아가기");
             System.out.println("메뉴 번호 입력: ");
         }
@@ -58,6 +61,7 @@ public class MapView {
             System.out.println("=========== 엘리니아 ==========");
             printSelectMenu();
             System.out.println("4. 검은마법사(보스) 이동");
+            printSelectNpcMenu();
             System.out.println("0. 마을 선택으로 돌아가기");
             System.out.println("메뉴 번호 입력: ");
         }
@@ -79,5 +83,8 @@ public class MapView {
         if (map.equals("엘리니아")) {
             System.out.println("\n엘리니아는 레벨 31 이상부터 입장 가능합니다.\n");
         }
+    }
+    public void printSelectNpcMenu() {
+        System.out.println("5. 전직하러 가기");
     }
 }
