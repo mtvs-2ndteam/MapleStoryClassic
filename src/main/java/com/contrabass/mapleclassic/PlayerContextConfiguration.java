@@ -18,16 +18,20 @@ public class PlayerContextConfiguration {
     }
 
     @Bean
-    public PlayerDTO pDTO(){
-        return new PlayerDTO(1
+    public PlayerDTO pDTO() {
+        return new PlayerDTO("운영자1"
+                , "마법사"
+                , 50
+                , 30
+                , 30
+                , 10000
                 , 1000
-                , 100
-                , 1000
-                , 100
+                , 20000
+                , 2000
                 , 10
                 , 0
                 , 100
-                , 1000
+                , 5000
                 , 10
                 , 10
                 , 20
