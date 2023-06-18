@@ -1,5 +1,6 @@
 package com.contrabass.mapleclassic.application.controller;
 
+import com.contrabass.mapleclassic.application.view.FightMapView;
 import com.contrabass.mapleclassic.application.view.MainView;
 import com.contrabass.mapleclassic.application.view.MapView;
 import com.contrabass.mapleclassic.utils.MainException;
@@ -13,6 +14,9 @@ public class MapController {
     MainException mainException = CONTEXT.getBean("mainException", MainException.class);
     MainView mainView = CONTEXT.getBean("mainView", MainView.class);
     MapView mapView = CONTEXT.getBean("mapView", MapView.class);
+
+    // 박현섭 작성
+    FightMapView fightMapView = CONTEXT.getBean("fightMapView", FightMapView.class);
 
     ///// 헤네시스 (레벨 1 이상 입장 가능) /////
     public void selectHenesys() {
@@ -33,6 +37,7 @@ public class MapController {
             }
             // 3. 사냥터
             if (selectNum == 3) {
+                fightMapView.selectFightMap();
                 continue;
             }
             // 4. 보스
