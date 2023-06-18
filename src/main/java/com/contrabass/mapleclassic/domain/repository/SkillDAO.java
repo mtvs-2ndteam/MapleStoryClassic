@@ -1,4 +1,4 @@
-package com.contrabass.mapleclassic.domain.service;
+package com.contrabass.mapleclassic.domain.repository;
 
 import com.contrabass.mapleclassic.domain.entity.PlayerDTO;
 import com.contrabass.mapleclassic.domain.entity.SkillDTO;
