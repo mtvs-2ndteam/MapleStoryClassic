@@ -1,4 +1,4 @@
-package com.contrabass.mapleclassic.domain.service;
+package com.contrabass.mapleclassic.domain.repository;
 
 import com.contrabass.mapleclassic.domain.entity.PlayerDTO;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,7 +9,7 @@ public class PlayerDAO {
     @Autowired
     private PlayerDTO dto;
 
-    void testExpUp(int exp){
+    void expUp(int exp){
         if (dto.getBaseExp()+exp >= dto.getMaxExp()) {
             int baseExp=(dto.getBaseExp()+exp)-dto.getMaxExp();
             int MaxExp=dto.getMaxExp()*2;
@@ -29,26 +29,7 @@ public class PlayerDAO {
     PlayerDTO dtoToSkill(){
         return dto;
     }
-
-    boolean levelUp(){
-        boolean result=false;
-        System.out.println("dto.getBaseExp() = " + dto.getBaseExp());
-        System.out.println("dto.getMaxExp() = " + dto.getMaxExp());
-        if (dto.getBaseExp() >= dto.getMaxExp()) {
-            int baseExp=dto.getBaseExp()-dto.getMaxExp();
-            int MaxExp=dto.getMaxExp()*2;
-            dto.setStatPoint(5);
-            dto.setSkillPoint(1);
-            dto.setBaseExp(baseExp);
-            dto.setMaxExp(MaxExp);
-            dto.setBaseHp(dto.getMaxHp());
-            dto.setBaseMp(dto.getMaxMp());
-            dto.setLevel(dto.getLevel()+1);
-            System.out.println("dto.toString() = " + dto.toString());
-            result=true;
-        }
-        return result;
-    }
+    
     void checkStat(){
         System.out.println("==========스텟 포인트==========");
         System.out.println("|공격력 \t\t\t\t\t"+dto.getAtk()+"\t|");
