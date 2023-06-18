@@ -1,6 +1,7 @@
 package com.contrabass.mapleclassic.application.view;
 
 import com.contrabass.mapleclassic.application.controller.FightController;
+import com.contrabass.mapleclassic.domain.entity.CloneMonsterDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -19,33 +20,33 @@ public class FightMapView {
         this.fightView = fightView;
     }
 
-    public void selectFightMap() {
+    public void selectFightMap(String map) {
         System.out.println("========== 사냥터 목록 ==========");
-        System.out.println("1. 사냥터 1");
-        System.out.println("2. 사냥터 2");
-        System.out.println("3. 사냥터 3");
-        System.out.println("4. 사냥터 4");
+        System.out.println("1. " + fightController.getCloneMonster(map, 1).getMonsterName() + " 사냥터");
+        System.out.println("2. " + fightController.getCloneMonster(map, 2).getMonsterName() + " 사냥터");
+        System.out.println("3. " + fightController.getCloneMonster(map, 3).getMonsterName() + " 사냥터");
+        System.out.println("4. " + fightController.getCloneMonster(map, 4).getMonsterName() + " 사냥터");
         run = true;
         while(run){
             switch (SCANNER.nextLine()) {
                 case "1":
-                    fightController.getCloneMonster("henesys", 1);
-                    fightView.entryFight(fightController.getCloneMonster("henesys", 1), fightController.getPlayerDTO());
+                    System.out.println(fightController.getCloneMonster(map, 1).getMonsterName() + "가 나타났다!");
+                    fightView.entryFight(fightController.getCloneMonster(map, 1), fightController.getPlayerDTO());
                     run = false;
                     break;
                 case "2":
-                    fightController.getCloneMonster("henesys", 2);
-                    fightView.entryFight(fightController.getCloneMonster("henesys", 2), fightController.getPlayerDTO());
+                    System.out.println(fightController.getCloneMonster(map, 2).getMonsterName() + "가 나타났다!");
+                    fightView.entryFight(fightController.getCloneMonster(map, 2), fightController.getPlayerDTO());
                     run = false;
                     break;
                 case "3":
-                    fightController.getCloneMonster("henesys", 3);
-                    fightView.entryFight(fightController.getCloneMonster("henesys", 3), fightController.getPlayerDTO());
+                    System.out.println(fightController.getCloneMonster(map, 3).getMonsterName() + "가 나타났다!");
+                    fightView.entryFight(fightController.getCloneMonster(map, 3), fightController.getPlayerDTO());
                     run = false;
                     break;
                 case "4":
-                    fightController.getCloneMonster("henesys", 4);
-                    fightView.entryFight(fightController.getCloneMonster("henesys", 4), fightController.getPlayerDTO());
+                    System.out.println(fightController.getCloneMonster(map, 4).getMonsterName() + "가 나타났다!");
+                    fightView.entryFight(fightController.getCloneMonster(map, 4), fightController.getPlayerDTO());
                     run = false;
                     break;
                 default:

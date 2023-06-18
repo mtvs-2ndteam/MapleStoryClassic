@@ -79,18 +79,18 @@ public class FightView {
     }
 
     public void printPlayerAndMonsteInfo(CloneMonsterDTO cloneMonsterDTO, PlayerDTO playerDTO) {
-        System.out.println(cloneMonsterDTO.getMonsterName() + " : " + cloneMonsterDTO.getMonsterHp());
-        System.out.println("플레이어의 hp는 : " + playerDTO.getBaseHp());
+        System.out.println(cloneMonsterDTO.getMonsterName() + " HP : " + cloneMonsterDTO.getMonsterHp());
+        System.out.println("플레이어 HP : " + playerDTO.getBaseHp());
     }
 
     public void selectNormalAttack(CloneMonsterDTO cloneMonsterDTO, AttackInfoDTO attackInfoDTO) {
         System.out.println(cloneMonsterDTO.getMonsterName() + "에게 기본 공격을 가했다!");
-        System.out.println("적에게" + attackInfoDTO.getMonsterHitDamage() + "의 데미지를 입혔다.");
+        System.out.println("적에게 " + attackInfoDTO.getMonsterHitDamage() + "의 데미지를 입혔다.");
     }
 
 
     public void selectSkillAttack(CloneMonsterDTO cloneMonsterDTO, AttackInfoDTO attackInfoDTO) {
         System.out.println(cloneMonsterDTO.getMonsterName() + "에게 스킬 공격을 가했다!");
-        System.out.println("적에게" + attackInfoDTO.getMonsterHitDamage() + "의 데미지를 입혔다.");
+        System.out.println("적에게 " + attackInfoDTO.getMonsterHitDamage() + "의 데미지를 입혔다.");
     }
 }

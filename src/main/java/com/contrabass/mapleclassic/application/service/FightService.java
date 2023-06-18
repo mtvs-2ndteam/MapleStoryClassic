@@ -27,10 +27,27 @@ public class FightService {
     }
 
     public CloneMonsterDTO getMonsterDBByIndex(String placeName, int index) {
+        MonsterDTO monsterDTO;
         switch (placeName) {
-            case "henesys":
-                System.out.println(index);
-                MonsterDTO monsterDTO = monsterRepository.getHenesysMonsterDB().get(index);
+            case "헤네시스":
+                monsterDTO = monsterRepository.getHenesysMonsterDB().get(index);
+                System.out.println(monsterDTO.getMonsterName());
+                cloneMonsterDTO.setMonsterHp(monsterDTO.getMonsterHp());
+                cloneMonsterDTO.setMonsterLevel(monsterDTO.getMonsterLevel());
+                cloneMonsterDTO.setMonsterName(monsterDTO.getMonsterName());
+                cloneMonsterDTO.setMonsterPower(monsterDTO.getMonsterPower());
+                cloneMonsterDTO.setMonsterDropMoney(monsterDTO.getMonsterDropMoney());
+                return cloneMonsterDTO;
+            case "커닝시티":
+                monsterDTO = monsterRepository.getKerningCityMonsterDB().get(index);
+                cloneMonsterDTO.setMonsterHp(monsterDTO.getMonsterHp());
+                cloneMonsterDTO.setMonsterLevel(monsterDTO.getMonsterLevel());
+                cloneMonsterDTO.setMonsterName(monsterDTO.getMonsterName());
+                cloneMonsterDTO.setMonsterPower(monsterDTO.getMonsterPower());
+                cloneMonsterDTO.setMonsterDropMoney(monsterDTO.getMonsterDropMoney());
+                return cloneMonsterDTO;
+            case "페리온":
+                monsterDTO = monsterRepository.getPerionMonsterDB().get(index);
                 cloneMonsterDTO.setMonsterHp(monsterDTO.getMonsterHp());
                 cloneMonsterDTO.setMonsterLevel(monsterDTO.getMonsterLevel());
                 cloneMonsterDTO.setMonsterName(monsterDTO.getMonsterName());
