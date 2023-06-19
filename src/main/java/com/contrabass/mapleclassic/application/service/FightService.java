@@ -3,7 +3,7 @@ package com.contrabass.mapleclassic.application.service;
 import com.contrabass.mapleclassic.domain.entity.AttackInfoDTO;
 import com.contrabass.mapleclassic.domain.entity.CloneMonsterDTO;
 import com.contrabass.mapleclassic.domain.entity.PlayerDTO;
-import com.contrabass.mapleclassic.domain.entity.henesys.normal.MonsterDTO;
+import com.contrabass.mapleclassic.domain.entity.MonsterDTO;
 import com.contrabass.mapleclassic.domain.repository.MonsterRepository;
 import com.contrabass.mapleclassic.domain.service.FightDomainService;
 import org.springframework.stereotype.Service;
@@ -31,12 +31,12 @@ public class FightService {
         switch (placeName) {
             case "헤네시스":
                 monsterDTO = monsterRepository.getHenesysMonsterDB().get(index);
-                System.out.println(monsterDTO.getMonsterName());
                 cloneMonsterDTO.setMonsterHp(monsterDTO.getMonsterHp());
                 cloneMonsterDTO.setMonsterLevel(monsterDTO.getMonsterLevel());
                 cloneMonsterDTO.setMonsterName(monsterDTO.getMonsterName());
                 cloneMonsterDTO.setMonsterPower(monsterDTO.getMonsterPower());
                 cloneMonsterDTO.setMonsterDropMoney(monsterDTO.getMonsterDropMoney());
+                cloneMonsterDTO.setExp(monsterDTO.getExp());
                 return cloneMonsterDTO;
             case "커닝시티":
                 monsterDTO = monsterRepository.getKerningCityMonsterDB().get(index);
@@ -45,6 +45,7 @@ public class FightService {
                 cloneMonsterDTO.setMonsterName(monsterDTO.getMonsterName());
                 cloneMonsterDTO.setMonsterPower(monsterDTO.getMonsterPower());
                 cloneMonsterDTO.setMonsterDropMoney(monsterDTO.getMonsterDropMoney());
+                cloneMonsterDTO.setExp(monsterDTO.getExp());
                 return cloneMonsterDTO;
             case "페리온":
                 monsterDTO = monsterRepository.getPerionMonsterDB().get(index);
@@ -53,6 +54,7 @@ public class FightService {
                 cloneMonsterDTO.setMonsterName(monsterDTO.getMonsterName());
                 cloneMonsterDTO.setMonsterPower(monsterDTO.getMonsterPower());
                 cloneMonsterDTO.setMonsterDropMoney(monsterDTO.getMonsterDropMoney());
+                cloneMonsterDTO.setExp(monsterDTO.getExp());
                 return cloneMonsterDTO;
         }
         return null;

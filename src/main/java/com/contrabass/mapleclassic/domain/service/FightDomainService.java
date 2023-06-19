@@ -1,10 +1,8 @@
 package com.contrabass.mapleclassic.domain.service;
 
-import com.contrabass.mapleclassic.application.controller.FightController;
-import com.contrabass.mapleclassic.domain.entity.AttackInfoDTO;
 import com.contrabass.mapleclassic.domain.entity.CloneMonsterDTO;
 import com.contrabass.mapleclassic.domain.entity.PlayerDTO;
-import com.contrabass.mapleclassic.domain.entity.henesys.normal.MonsterDTO;
+import com.contrabass.mapleclassic.domain.repository.PlayerDAO;
 import lombok.Getter;
 import lombok.Setter;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,6 +14,7 @@ import java.util.Random;
 @Setter
 @Service
 public class FightDomainService {
+    private final PlayerDAO playerDAO;
     private int resultDamage = 0;
 
     private Random r = new Random();
@@ -23,8 +22,10 @@ public class FightDomainService {
     private final PlayerDTO playerDTO;
 
     @Autowired
-    public FightDomainService(PlayerDTO playerDTO) {
+    public FightDomainService(PlayerDTO playerDTO, PlayerDAO playerDAO)
+    {
         this.playerDTO = playerDTO;
+        this.playerDAO = playerDAO;
     }
 
     public int playerAttack(CloneMonsterDTO cloneMonsterDTO) {
@@ -58,6 +59,7 @@ public class FightDomainService {
 
     public boolean checkDie(CloneMonsterDTO cloneMonsterDTO) {
         if (cloneMonsterDTO.getMonsterHp() <= 0) {
+            playerDAO.expUp(cloneMonsterDTO.getExp());
             return true;
         }
         return false;

@@ -1,6 +1,6 @@
 package com.contrabass.mapleclassic.domain.repository;
 
-import com.contrabass.mapleclassic.domain.entity.henesys.normal.*;
+import com.contrabass.mapleclassic.domain.entity.MonsterDTO;
 import lombok.Getter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;

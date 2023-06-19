@@ -1,4 +1,4 @@
-package com.contrabass.mapleclassic.domain.entity.henesys.normal;
+package com.contrabass.mapleclassic.domain.entity;
 
 
 import lombok.AllArgsConstructor;
@@ -17,4 +17,5 @@ public class MonsterDTO {
     int monsterHp;
     int monsterPower;
     int monsterDropMoney;
+    int exp;
 }
