@@ -24,18 +24,18 @@ public class FightView {
     private boolean run = true;
 
     @Autowired
-    public FightView(FightController fightController){
+    public FightView(FightController fightController) {
         this.fightController = fightController;
     }
 
     public void printEntryFight() {
-        System.out.println("========== 전투 화면 ==========");
+        System.out.println("==========전투 화면==========");
         System.out.println("1. 기본공격\n2. 스킬공격 ");
     }
 
     public void entryFight(CloneMonsterDTO cloneMonsterDTO, PlayerDTO playerDTO) {
         run = true;
-        while(run){
+        while (run) {
             printEntryFight();
             switch (SCANNER.nextInt()) {
                 case 1:
@@ -47,10 +47,10 @@ public class FightView {
                     ArrayList<SkillDTO> skills = playerDTO.getSkills();
                     int index;
                     System.out.println("========== 스킬 목록 ==========");
-                    for(int i = 0; i <+ skills.size(); i++){
-                        System.out.println(i+1 + ". "+ skills.get(i).getSkillName());
+                    for (int i = 0; i < skills.size(); i++) {
+                        System.out.println(i + 1 + ". " + skills.get(i).getSkillName());
                     }
-                    while(true){
+                    while (true) {
                         index = SCANNER.nextInt();
                         if (index <= skills.size() && index > 0) {
                             break;
@@ -69,13 +69,13 @@ public class FightView {
             if (attackInfoDTO.isPlayerDie) {
                 System.out.println("플레이어가 사망했다.");
                 run = false;
-            }
-            else if(attackInfoDTO.isMonsterDie) {
-                System.out.println(cloneMonsterDTO.getMonsterName() +  "를 쓰려트렸다!" + cloneMonsterDTO.getMonsterDropMoney() + "의 돈을 얻었다.");
+            } else if (attackInfoDTO.isMonsterDie) {
+                System.out.println(cloneMonsterDTO.getMonsterName() + "를 쓰려트렸다!" + cloneMonsterDTO.getMonsterDropMoney() + "의 돈을 얻었다.");
                 playerDTO.setMeso(playerDTO.getMeso() + cloneMonsterDTO.getMonsterDropMoney());
                 run = false;
             }
         }
+
     }
 
     public void printPlayerAndMonsteInfo(CloneMonsterDTO cloneMonsterDTO, PlayerDTO playerDTO) {

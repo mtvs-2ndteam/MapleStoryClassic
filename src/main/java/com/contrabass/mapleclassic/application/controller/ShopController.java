@@ -4,23 +4,20 @@ import com.contrabass.mapleclassic.application.service.ShopService;
 import com.contrabass.mapleclassic.application.view.MainView;
 import com.contrabass.mapleclassic.application.view.ShopView;
 import com.contrabass.mapleclassic.domain.entity.PlayerDTO;
-import com.contrabass.mapleclassic.utils.MainException;
 import org.springframework.stereotype.Controller;
 
 import static com.contrabass.mapleclassic.Constant.CONTEXT;
-import static com.contrabass.mapleclassic.Constant.SCANNER;
 
 @Controller
 public class ShopController {
     ShopView shopView = CONTEXT.getBean("shopView", ShopView.class);
-    MainException mainException = CONTEXT.getBean("mainException", MainException.class);
     MainView mainView = CONTEXT.getBean("mainView", MainView.class);
 
     ///// HP 포션 컨트롤러 /////
     public void selectHpShop(PlayerDTO player) {
         while (true) {
             shopView.printHpPotionMessage();
-            int selectNum = mainException.solveInputValueException(SCANNER.nextLine());
+            int selectNum = mainView.input();
 
             // 1. 구매하기
             if (selectNum == 1) {
@@ -46,7 +43,7 @@ public class ShopController {
     public void selectMpShop(PlayerDTO player) {
         while (true) {
             shopView.printMpPotionMessage();
-            int selectNum = mainException.solveInputValueException(SCANNER.nextLine());
+            int selectNum = mainView.input();
 
             // 1. 구매하기
             if (selectNum == 1) {
@@ -75,7 +72,7 @@ public class ShopController {
 
         while (true) {
             shopView.printBuyPotion(player);
-            int wantCount = mainException.solveInputValueException(SCANNER.nextLine());
+            int wantCount = mainView.input();
 
             // 포션 종류별 계산
             if (type.equals("HP")) {
@@ -112,7 +109,7 @@ public class ShopController {
 
         while (true) {
             shopView.printSellPotion(player);
-            int wantCount = mainException.solveInputValueException(SCANNER.nextLine());
+            int wantCount = mainView.input();
 
             // 포션 종류별 계산
             if (type.equals("HP")) {

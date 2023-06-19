@@ -1,18 +1,15 @@
 package com.contrabass.mapleclassic.application.controller;
 
-import com.contrabass.mapleclassic.application.view.*;
 import com.contrabass.mapleclassic.application.service.SaunaService;
 import com.contrabass.mapleclassic.application.service.ShopService;
+import com.contrabass.mapleclassic.application.view.*;
 import com.contrabass.mapleclassic.domain.entity.PlayerDTO;
-import com.contrabass.mapleclassic.utils.MainException;
 import org.springframework.stereotype.Controller;
 
 import static com.contrabass.mapleclassic.Constant.CONTEXT;
-import static com.contrabass.mapleclassic.Constant.SCANNER;
 
 @Controller
 public class MapController {
-    MainException mainException = CONTEXT.getBean("mainException", MainException.class);
     MainView mainView = CONTEXT.getBean("mainView", MainView.class);
     MapView mapView = CONTEXT.getBean("mapView", MapView.class);
     ShopView shopView = CONTEXT.getBean("shopView", ShopView.class);
@@ -24,6 +21,7 @@ public class MapController {
     // 김지수 작성
     NpcView npcView = CONTEXT.getBean("npcView", NpcView.class);
 
+    ///// 헤네시스 (레벨 1 이상 입장 가능) /////
     ///// 커닝시티 (레벨 11 이상 입장 가능) /////
     ///// 페리온 (레벨 21 이상 입장 가능) /////
     ///// 엘리니아 (레벨 31 이상 입장 가능) /////
@@ -31,7 +29,7 @@ public class MapController {
         mapView.printEnterMapMessage(map);
         while (true) {
             mapView.printMenu(map);
-            int selectNum = mainException.solveInputValueException(SCANNER.nextLine());
+            int selectNum = mainView.input();
 
             // 1. 상점
             if (selectNum == 1) {
@@ -53,7 +51,7 @@ public class MapController {
                 continue;
             }
             // 5. 전직
-            if(selectNum == 5) {
+            if (selectNum == 5) {
                 selectJob();
                 continue;
             }
@@ -74,7 +72,7 @@ public class MapController {
         shopView.printShopMessage();
         while (true) {
             shopView.printShop(player);
-            int selectNum = mainException.solveInputValueException(SCANNER.nextLine());
+            int selectNum = mainView.input();
 
             // 1. HP 물약
             if (selectNum == 1) {
@@ -104,7 +102,7 @@ public class MapController {
         saunaView.printSaunaMessage();
         while (true) {
             saunaView.printSauna(player);
-            int selectNum = mainException.solveInputValueException(SCANNER.nextLine());
+            int selectNum = mainView.input();
 
             // 1. 5초 이용
             if (selectNum == 1) {
@@ -125,6 +123,7 @@ public class MapController {
             mainView.printErrorMessage();
         }
     }
+
     public void selectJob() {
 
         PlayerDTO player = new PlayerDTO();
@@ -132,7 +131,7 @@ public class MapController {
 
         while (true) {
 
-            int selectNum = mainException.solveInputValueException(SCANNER.nextLine());
+            int selectNum = mainView.input();
 
             // 1. 전사 선택
             if (selectNum == 1) {

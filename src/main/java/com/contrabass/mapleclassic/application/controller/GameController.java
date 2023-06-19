@@ -5,15 +5,12 @@ import com.contrabass.mapleclassic.application.view.MainView;
 import com.contrabass.mapleclassic.application.view.MapView;
 import com.contrabass.mapleclassic.application.view.UserView;
 import com.contrabass.mapleclassic.domain.entity.PlayerDTO;
-import com.contrabass.mapleclassic.utils.MainException;
 import org.springframework.stereotype.Controller;
 
 import static com.contrabass.mapleclassic.Constant.CONTEXT;
-import static com.contrabass.mapleclassic.Constant.SCANNER;
 
 @Controller
 public class GameController {
-    MainException mainException = CONTEXT.getBean("mainException", MainException.class);
     GameService gameService = CONTEXT.getBean("gameService", GameService.class);
     MainView mainView = CONTEXT.getBean("mainView", MainView.class);
     MapView mapView = CONTEXT.getBean("mapView", MapView.class);
@@ -29,7 +26,7 @@ public class GameController {
         while (true) {
             userView.printUserInfo(player);
             mainView.printLobby();
-            int selectNum = mainException.solveInputValueException(SCANNER.nextLine());
+            int selectNum = mainView.input();
 
             // 1. 내 정보
             if (selectNum == 1) {
@@ -56,7 +53,7 @@ public class GameController {
         userView.printMyInfoMessage();
         while (true) {
             userView.printSelectMyInfo(player);
-            int selectNum = mainException.solveInputValueException(SCANNER.nextLine());
+            int selectNum = mainView.input();
 
             // 1. 스텟 찍기
             if (selectNum == 1) {
@@ -73,11 +70,11 @@ public class GameController {
     }
 
     ///// 마을 이동 /////
-    public void selectMaps(PlayerDTO playerDTO) {
+    public void selectMaps(PlayerDTO player) {
         mapView.printSelectMapsMessage();
         while (true) {
             mainView.printMapMovement();
-            int selectNum = mainException.solveInputValueException(SCANNER.nextLine());
+            int selectNum = mainView.input();
 
             // 1. 헤네시스(레벨 1 이상 입장 가능)
             // 2. 커닝시티(레벨 11 이상 입장 가능)
@@ -87,7 +84,7 @@ public class GameController {
                     || selectNum == 2
                     || selectNum == 3
                     || selectNum == 4) {
-                gameService.selectMaps(selectNum, this.player);
+                gameService.selectMaps(selectNum, player);
                 continue;
             }
             // 0. 로비

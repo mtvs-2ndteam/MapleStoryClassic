@@ -1,6 +1,17 @@
 package com.contrabass.mapleclassic.application.view;
 
+import com.contrabass.mapleclassic.utils.MainException;
+
+import static com.contrabass.mapleclassic.Constant.CONTEXT;
+import static com.contrabass.mapleclassic.Constant.SCANNER;
+
 public class MainView {
+    MainException mainException = CONTEXT.getBean("mainException", MainException.class);
+
+    public int input() {
+        return mainException.solveInputValueException(SCANNER.nextLine());
+    }
+
     public void printStartView() {
         System.out.println("로딩 중...\n. . .\n");
         System.out.println("로그인이 필요합니다.");
