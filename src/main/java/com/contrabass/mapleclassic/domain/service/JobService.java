@@ -2,12 +2,13 @@ package com.contrabass.mapleclassic.domain.service;
 
 import com.contrabass.mapleclassic.domain.entity.JobDTO;
 import com.contrabass.mapleclassic.domain.entity.PlayerDTO;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
 
-@Service
+@Component
 public class JobService {
 
     private List<JobDTO> jobs;

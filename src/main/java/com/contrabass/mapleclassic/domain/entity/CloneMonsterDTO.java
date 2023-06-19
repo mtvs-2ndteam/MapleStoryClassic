@@ -15,4 +15,5 @@ public class CloneMonsterDTO {
     int monsterHp;
     int monsterPower;
     int monsterDropMoney;
+    int exp;
 }

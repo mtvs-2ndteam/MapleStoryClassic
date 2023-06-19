@@ -1,10 +1,9 @@
-package com.contrabass.mapleclassic;
+package com.contrabass.mapleclassic.utils.contextconfiguration;
 
 import com.contrabass.mapleclassic.domain.entity.PlayerDTO;
-import com.contrabass.mapleclassic.domain.service.PlayerDAO;
-import com.contrabass.mapleclassic.domain.service.SkillDAO;
+import com.contrabass.mapleclassic.domain.repository.PlayerDAO;
+import com.contrabass.mapleclassic.domain.repository.SkillDAO;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 
 import java.util.ArrayList;
@@ -13,7 +12,7 @@ import java.util.ArrayList;
 @Configuration
 public class PlayerContextConfiguration {
     @Bean
-    public PlayerDAO plogic() {
+    public PlayerDAO pDAO() {
         return new PlayerDAO();
     }
 

@@ -12,6 +12,7 @@ import org.springframework.stereotype.Controller;
 @Controller("fightController")
 public class FightController {
 
+
     private final FightService fightService;
 
     @Autowired

@@ -43,7 +43,7 @@ public class MapController {
             }
             // 3. 사냥터
             if (selectNum == 3) {
-                fightMapView.selectFightMap();
+                fightMapView.selectFightMap(map);
                 continue;
             }
             // 4. 보스

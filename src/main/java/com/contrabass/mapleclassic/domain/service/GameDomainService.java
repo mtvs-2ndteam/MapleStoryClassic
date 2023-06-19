@@ -1,11 +1,12 @@
 package com.contrabass.mapleclassic.domain.service;
 
 import com.contrabass.mapleclassic.domain.entity.PlayerDTO;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import java.util.concurrent.TimeUnit;
 
-@Service
+@Component
 public class GameDomainService {
 
     // 레벨 판단
