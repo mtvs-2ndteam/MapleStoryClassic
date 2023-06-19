@@ -2,9 +2,10 @@ package com.contrabass.mapleclassic.domain.repository;
 
 import com.contrabass.mapleclassic.domain.entity.PlayerDTO;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 
-@Service("pDAO")
+@Repository("pDAO")
 public class PlayerDAO {
     @Autowired
     private PlayerDTO dto;

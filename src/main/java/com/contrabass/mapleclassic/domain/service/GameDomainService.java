@@ -5,7 +5,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.concurrent.TimeUnit;
 
-@Service
+@Component
 public class GameDomainService {
 
     // 레벨 판단

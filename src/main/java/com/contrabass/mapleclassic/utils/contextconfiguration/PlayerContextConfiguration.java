@@ -1,4 +1,4 @@
-package com.contrabass.mapleclassic;
+package com.contrabass.mapleclassic.utils.contextconfiguration;
 
 import com.contrabass.mapleclassic.domain.entity.PlayerDTO;
 import com.contrabass.mapleclassic.domain.repository.PlayerDAO;

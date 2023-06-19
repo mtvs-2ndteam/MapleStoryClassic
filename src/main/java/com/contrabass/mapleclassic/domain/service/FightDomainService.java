@@ -6,13 +6,12 @@ import com.contrabass.mapleclassic.domain.repository.PlayerDAO;
 import lombok.Getter;
 import lombok.Setter;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import java.util.Random;
 
-@Getter
-@Setter
-@Service
+@Component
 public class FightDomainService {
     private final PlayerDAO playerDAO;
     private int resultDamage = 0;

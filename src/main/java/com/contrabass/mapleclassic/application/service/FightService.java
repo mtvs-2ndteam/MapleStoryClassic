@@ -4,20 +4,20 @@ import com.contrabass.mapleclassic.domain.entity.AttackInfoDTO;
 import com.contrabass.mapleclassic.domain.entity.CloneMonsterDTO;
 import com.contrabass.mapleclassic.domain.entity.PlayerDTO;
 import com.contrabass.mapleclassic.domain.entity.MonsterDTO;
-import com.contrabass.mapleclassic.domain.repository.MonsterRepository;
+import com.contrabass.mapleclassic.domain.repository.MonsterDAO;
 import com.contrabass.mapleclassic.domain.service.FightDomainService;
 import org.springframework.stereotype.Service;
 
 @Service
 public class FightService {
 
-    private final MonsterRepository monsterRepository;
+    private final MonsterDAO monsterRepository;
     private final FightDomainService fightDomainService;
     private final AttackInfoDTO attackInfoDTO;
     private final CloneMonsterDTO cloneMonsterDTO;
     private final PlayerDTO playerDTO;
 
-    public FightService(MonsterRepository monsterRepository, FightDomainService fightDomainService,
+    public FightService(MonsterDAO monsterRepository, FightDomainService fightDomainService,
                         AttackInfoDTO attackInfoDTO, CloneMonsterDTO cloneMonsterDTO, PlayerDTO playerDTO) {
         this.monsterRepository = monsterRepository;
         this.fightDomainService = fightDomainService;
