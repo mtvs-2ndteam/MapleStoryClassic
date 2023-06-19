@@ -1,13 +1,13 @@
 package com.contrabass.mapleclassic.application.view;
 
 
-import com.contrabass.mapleclassic.domain.entity.PlayerDTO;
+import com.contrabass.mapleclassic.application.dto.PlayerDTO;
 import com.contrabass.mapleclassic.domain.service.JobService;
 import org.springframework.beans.factory.annotation.Autowired;
 
 public class NpcView {
 
-    private JobService jobService;
+    private final JobService jobService;
 
     @Autowired
     public NpcView(JobService jobService) {

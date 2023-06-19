@@ -1,6 +1,6 @@
 package com.contrabass.mapleclassic.utils.contextconfiguration;
 
-import com.contrabass.mapleclassic.domain.entity.PlayerDTO;
+import com.contrabass.mapleclassic.application.dto.PlayerDTO;
 import com.contrabass.mapleclassic.domain.repository.PlayerDAO;
 import com.contrabass.mapleclassic.domain.repository.SkillDAO;
 import org.springframework.context.annotation.Bean;

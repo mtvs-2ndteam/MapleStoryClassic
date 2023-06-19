@@ -6,15 +6,12 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import static com.contrabass.mapleclassic.Constant.CONTEXT;
-
 public class ApplicationServiceLogicTests {
     private MainException mainException;
 
     @BeforeEach
     public void setUp() {
-        this.mainException = CONTEXT.getBean(
-                "mainException", MainException.class);
+        this.mainException = new MainException();
     }
 
     @DisplayName("음수 입력 시 예외 발생 테스트")

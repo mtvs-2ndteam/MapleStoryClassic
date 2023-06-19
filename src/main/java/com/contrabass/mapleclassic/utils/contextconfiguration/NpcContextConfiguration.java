@@ -1,12 +1,11 @@
 package com.contrabass.mapleclassic.utils.contextconfiguration;
 
+import com.contrabass.mapleclassic.application.dto.JobDTO;
 import com.contrabass.mapleclassic.application.view.NpcView;
-import com.contrabass.mapleclassic.domain.entity.JobDTO;
-import com.contrabass.mapleclassic.domain.entity.NpcQuestDTO;
 import com.contrabass.mapleclassic.domain.service.JobService;
-import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.context.annotation.*;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Scope;
 
 @Configuration
 public class NpcContextConfiguration {

@@ -1,17 +1,15 @@
-package com.contrabass.mapleclassic.domain.entity;
-
+package com.contrabass.mapleclassic.application.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-@NoArgsConstructor
 @AllArgsConstructor
+@NoArgsConstructor
 @Getter
 @Setter
-public class MonsterDTO {
-
+public class CloneMonsterDTO {
     String monsterName;
     int monsterLevel;
     int monsterHp;

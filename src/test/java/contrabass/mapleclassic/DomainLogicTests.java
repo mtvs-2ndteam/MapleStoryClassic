@@ -1,23 +1,24 @@
 package contrabass.mapleclassic;
 
-import com.contrabass.mapleclassic.domain.entity.PlayerDTO;
+import com.contrabass.mapleclassic.application.dto.PlayerDTO;
+import com.contrabass.mapleclassic.application.dto.SaunaDTO;
 import com.contrabass.mapleclassic.domain.service.GameDomainService;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import static com.contrabass.mapleclassic.Constant.CONTEXT;
-
 public class DomainLogicTests {
     private GameDomainService gameDomainService;
     private PlayerDTO player;
 
+    private SaunaDTO saunaDTO;
+
     @BeforeEach
     public void setUp() {
-        this.gameDomainService =
-                CONTEXT.getBean("gameDomainService", GameDomainService.class);
-        this.player = CONTEXT.getBean("pDTO", PlayerDTO.class);
+        this.gameDomainService = new GameDomainService();
+        this.player = new PlayerDTO();
+        this.saunaDTO = new SaunaDTO();
     }
 
     @DisplayName("1~10까지 레벨 판단 테스트")
@@ -69,12 +70,16 @@ public class DomainLogicTests {
     @DisplayName("사우나 종류에 따른 회복 시간 테스트")
     @Test
     public void recoverTest() {
+        saunaDTO.setPlayer(player);
+        saunaDTO.setType("프리미엄");
         int time = 5;
         int time2 = 10;
 
         Assertions.assertEquals("성공",
-                gameDomainService.recover(time, player, 4000));
+                gameDomainService.recover(saunaDTO, time, 4000));
+
+        saunaDTO.setType("일반");
         Assertions.assertEquals("성공",
-                gameDomainService.recover(time2, player, 2000));
+                gameDomainService.recover(saunaDTO, time2, 2000));
     }
 }

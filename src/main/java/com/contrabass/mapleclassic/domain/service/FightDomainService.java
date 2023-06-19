@@ -1,28 +1,23 @@
 package com.contrabass.mapleclassic.domain.service;
 
-import com.contrabass.mapleclassic.domain.entity.CloneMonsterDTO;
-import com.contrabass.mapleclassic.domain.entity.PlayerDTO;
+import com.contrabass.mapleclassic.application.dto.CloneMonsterDTO;
+import com.contrabass.mapleclassic.application.dto.PlayerDTO;
 import com.contrabass.mapleclassic.domain.repository.PlayerDAO;
-import lombok.Getter;
-import lombok.Setter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import org.springframework.stereotype.Service;
 
 import java.util.Random;
 
 @Component
 public class FightDomainService {
     private final PlayerDAO playerDAO;
-    private int resultDamage = 0;
-
-    private Random r = new Random();
-    private int temp = 0;
     private final PlayerDTO playerDTO;
+    private int resultDamage = 0;
+    private final Random r = new Random();
+    private int temp = 0;
 
     @Autowired
-    public FightDomainService(PlayerDTO playerDTO, PlayerDAO playerDAO)
-    {
+    public FightDomainService(PlayerDTO playerDTO, PlayerDAO playerDAO) {
         this.playerDTO = playerDTO;
         this.playerDAO = playerDAO;
     }
@@ -65,10 +60,7 @@ public class FightDomainService {
     }
 
     public boolean playerCheckDie() {
-        if (playerDTO.getBaseHp() <= 0) {
-            return true;
-        }
-        return false;
+        return playerDTO.getBaseHp() <= 0;
     }
 
     //

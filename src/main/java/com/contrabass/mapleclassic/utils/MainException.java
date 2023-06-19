@@ -1,5 +1,8 @@
 package com.contrabass.mapleclassic.utils;
 
+import org.springframework.stereotype.Component;
+
+@Component
 public class MainException {
     public void validateInputValue(String readLine) {
         if (!readLine.matches("^(0|[1-9]+[0-9]*)$")

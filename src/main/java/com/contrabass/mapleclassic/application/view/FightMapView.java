@@ -1,18 +1,16 @@
 package com.contrabass.mapleclassic.application.view;
 
 import com.contrabass.mapleclassic.application.controller.FightController;
-import com.contrabass.mapleclassic.domain.entity.CloneMonsterDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import static com.contrabass.mapleclassic.Constant.SCANNER;
+import java.util.Scanner;
 
 @Component
 public class FightMapView {
-    private boolean run = true;
-
     private final FightController fightController;
     private final FightView fightView;
+    private boolean run = true;
 
     @Autowired
     public FightMapView(FightController fightController, FightView fightView) {
@@ -27,8 +25,8 @@ public class FightMapView {
         System.out.println("3. " + fightController.getCloneMonster(map, 3).getMonsterName() + " 사냥터");
         System.out.println("4. " + fightController.getCloneMonster(map, 4).getMonsterName() + " 사냥터");
         run = true;
-        while(run){
-            switch (SCANNER.nextLine()) {
+        while (run) {
+            switch (new Scanner(System.in).nextLine()) {
                 case "1":
                     System.out.println(fightController.getCloneMonster(map, 1).getMonsterName() + "가 나타났다!");
                     fightView.entryFight(fightController.getCloneMonster(map, 1), fightController.getPlayerDTO());

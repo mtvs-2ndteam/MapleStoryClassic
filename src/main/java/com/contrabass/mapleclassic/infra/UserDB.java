@@ -1,6 +1,6 @@
 package com.contrabass.mapleclassic.infra;
 
-import com.contrabass.mapleclassic.domain.entity.UserDTO;
+import com.contrabass.mapleclassic.application.dto.UserDTO;
 
 import java.util.HashMap;
 import java.util.Map;

@@ -1,9 +1,9 @@
 package com.contrabass.mapleclassic.application.controller;
 
+import com.contrabass.mapleclassic.application.dto.AttackInfoDTO;
+import com.contrabass.mapleclassic.application.dto.CloneMonsterDTO;
+import com.contrabass.mapleclassic.application.dto.PlayerDTO;
 import com.contrabass.mapleclassic.application.service.FightService;
-import com.contrabass.mapleclassic.domain.entity.AttackInfoDTO;
-import com.contrabass.mapleclassic.domain.entity.CloneMonsterDTO;
-import com.contrabass.mapleclassic.domain.entity.PlayerDTO;
 import lombok.Setter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

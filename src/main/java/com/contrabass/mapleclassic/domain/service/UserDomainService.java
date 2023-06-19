@@ -1,10 +1,9 @@
 package com.contrabass.mapleclassic.domain.service;
 
-import com.contrabass.mapleclassic.domain.entity.UserDTO;
+import com.contrabass.mapleclassic.application.dto.UserDTO;
 import com.contrabass.mapleclassic.domain.repository.UserDAO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import org.springframework.stereotype.Service;
 
 import java.util.List;
 

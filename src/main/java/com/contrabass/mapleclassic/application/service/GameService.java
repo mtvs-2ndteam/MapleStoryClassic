@@ -1,79 +1,94 @@
 package com.contrabass.mapleclassic.application.service;
 
-import com.contrabass.mapleclassic.application.controller.MapController;
-import com.contrabass.mapleclassic.application.view.MapView;
-import com.contrabass.mapleclassic.domain.entity.PlayerDTO;
+import com.contrabass.mapleclassic.application.dto.SaunaDTO;
+import com.contrabass.mapleclassic.application.dto.ShopDTO;
 import com.contrabass.mapleclassic.domain.service.GameDomainService;
-import com.contrabass.mapleclassic.domain.service.UserDomainService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import static com.contrabass.mapleclassic.Constant.CONTEXT;
 
 @Service
 public class GameService {
-    MapView mapView = CONTEXT.getBean("mapView", MapView.class);
-    MapController mapController = CONTEXT.getBean("mapController", MapController.class);
-    GameDomainService gameDomainService = CONTEXT.getBean("gameDomainService", GameDomainService.class);
-    UserDomainService userDomainService = CONTEXT.getBean("userDomainService", UserDomainService.class);
+    private final GameDomainService gameDomainService;
+
+    @Autowired
+    public GameService(GameDomainService gameDomainService) {
+        this.gameDomainService = gameDomainService;
+    }
+
 
     // 특정 회원 정보 조회
     public void selectOneUser(String userId) {
 //        userDomainService.checkUserId(userId);
     }
 
-    // 선택 번호와 레벨에 따른 마을 이동 판단
-    public void selectMaps(int selectNum, PlayerDTO player) {
-        String judgeLevel = gameDomainService.judgeLevel(player.getLevel());
-        String map = "";
-
-        // 정상 입장
-        if ((judgeLevel.equals("헤네시스")
-                || judgeLevel.equals("커닝시티")
-                || judgeLevel.equals("페리온")
-                || judgeLevel.equals("엘리니아")) && selectNum == 1) {
-            mapController.selectMap("헤네시스", player);
-        }
-        if ((judgeLevel.equals("커닝시티")
-                || judgeLevel.equals("페리온")
-                || judgeLevel.equals("엘리니아")) && selectNum == 2) {
-            mapController.selectMap("커닝시티", player);
-        }
-        if ((judgeLevel.equals("페리온")
-                || judgeLevel.equals("엘리니아")) && selectNum == 3) {
-            mapController.selectMap("페리온", player);
-        }
-        if (judgeLevel.equals("엘리니아") && selectNum == 4) {
-            mapController.selectMap("엘리니아", player);
-        }
-
-        // 잘못된 입장
-        if (judgeLevel.equals("헤네시스") && selectNum == 2) {
-            mapView.printEnterError("커닝시티");
-        }
-        if ((judgeLevel.equals("헤네시스")
-                || judgeLevel.equals("커닝시티")) && selectNum == 3) {
-            mapView.printEnterError("페리온");
-        }
-        if ((judgeLevel.equals("헤네시스")
-                || judgeLevel.equals("커닝시티")
-                || judgeLevel.equals("페리온")) && selectNum == 4) {
-            mapView.printEnterError("엘리니아");
-        }
+    // 레벨 판단 도메인 로직 연결
+    public String judgeLevelService(int level) {
+        return gameDomainService.judgeLevel(level);
     }
-    public void selectJob(int selectNum) {
 
-        if(selectNum == 1) {
-            mapController.selectJob();
+    // 포션 가격 기준
+    public int price(ShopDTO shopDTO, String type) {
+        double price = 0;
+        double penalty = 1;
+        if (type.equals("판매")) {
+            penalty = 0.7;
         }
-        if(selectNum == 2) {
-            mapController.selectJob();
+
+        if (shopDTO.getPlayer().getLevel() > 0 && shopDTO.getPlayer().getLevel() < 11) {
+            price = (100 * penalty);
         }
-        if(selectNum == 3) {
-            mapController.selectJob();
+        if (shopDTO.getPlayer().getLevel() > 10 && shopDTO.getPlayer().getLevel() < 21) {
+            price = (200 * penalty);
         }
-        if(selectNum == 4) {
-            mapController.selectJob();
+        if (shopDTO.getPlayer().getLevel() > 20 && shopDTO.getPlayer().getLevel() < 31) {
+            price = (400 * penalty);
         }
+        if (shopDTO.getPlayer().getLevel() > 30) {
+            price = (800 * penalty);
+        }
+        return (int) price;
+    }
+
+    // 포션 구매 도메인 로직 연결
+    public String buyPotionCountService(ShopDTO shopDTO) {
+        return gameDomainService.buyPotionCount(shopDTO, price(shopDTO, "구매"));
+    }
+
+    // 포션 판매 도메인 로직 연결
+    public String sellPotionCountService(ShopDTO shopDTO) {
+        return gameDomainService.sellPotionCount(shopDTO, price(shopDTO, "판매"));
+    }
+
+    // 사우나 가격표 기준
+    public int standard(SaunaDTO saunaDTO) {
+        int standard = 0;
+        int royalty = 1;
+        if (saunaDTO.getType().equals("프리미엄")) {
+            royalty = 2;
+        }
+        if (saunaDTO.getPlayer().getLevel() > 0 && saunaDTO.getPlayer().getLevel() < 11) {
+            standard = 500 * royalty;
+        }
+        if (saunaDTO.getPlayer().getLevel() > 10 && saunaDTO.getPlayer().getLevel() < 21) {
+            standard = 1000 * royalty;
+        }
+        if (saunaDTO.getPlayer().getLevel() > 20 && saunaDTO.getPlayer().getLevel() < 31) {
+            standard = 2000 * royalty;
+        }
+        if (saunaDTO.getPlayer().getLevel() > 30) {
+            standard = 4000 * royalty;
+        }
+        return standard;
+    }
+
+    // 메소 판단 도메인 로직 연결
+    public String connectSaunaService(SaunaDTO saunaDTO) {
+        return gameDomainService.judgeMeso(saunaDTO.getPlayer().getMeso(), standard(saunaDTO));
+    }
+
+    // 사우나 종류에 따른 회복 도메인 로직 연결
+    public String goSaunaService(SaunaDTO saunaDTO, int time) {
+        return gameDomainService.recover(saunaDTO, time, standard(saunaDTO));
     }
 
 

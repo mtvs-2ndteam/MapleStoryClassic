@@ -1,9 +1,9 @@
 package com.contrabass.mapleclassic.application.service;
 
-import com.contrabass.mapleclassic.domain.entity.AttackInfoDTO;
-import com.contrabass.mapleclassic.domain.entity.CloneMonsterDTO;
-import com.contrabass.mapleclassic.domain.entity.PlayerDTO;
-import com.contrabass.mapleclassic.domain.entity.MonsterDTO;
+import com.contrabass.mapleclassic.application.dto.AttackInfoDTO;
+import com.contrabass.mapleclassic.application.dto.CloneMonsterDTO;
+import com.contrabass.mapleclassic.application.dto.MonsterDTO;
+import com.contrabass.mapleclassic.application.dto.PlayerDTO;
 import com.contrabass.mapleclassic.domain.repository.MonsterDAO;
 import com.contrabass.mapleclassic.domain.service.FightDomainService;
 import org.springframework.stereotype.Service;

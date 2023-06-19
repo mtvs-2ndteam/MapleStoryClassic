@@ -1,6 +1,6 @@
 package com.contrabass.mapleclassic.infra;
 
-import com.contrabass.mapleclassic.domain.entity.MonsterDTO;
+import com.contrabass.mapleclassic.application.dto.MonsterDTO;
 
 import java.util.Map;
 

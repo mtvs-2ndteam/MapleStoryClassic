@@ -1,7 +1,6 @@
 package com.contrabass.mapleclassic.utils.contextconfiguration;
 
-import com.contrabass.mapleclassic.application.view.UserView;
-import com.contrabass.mapleclassic.domain.entity.UserDTO;
+import com.contrabass.mapleclassic.application.dto.UserDTO;
 import com.contrabass.mapleclassic.domain.repository.UserDAO;
 import com.contrabass.mapleclassic.domain.service.UserDomainService;
 import com.contrabass.mapleclassic.infra.UserDB;
@@ -11,10 +10,6 @@ import org.springframework.context.annotation.Scope;
 
 @Configuration
 public class UserContextConfiguration {
-    @Bean
-    public UserView userView() {
-        return new UserView();
-    }
 
     @Bean
     public UserDTO userDTO() {

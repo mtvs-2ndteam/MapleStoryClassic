@@ -1,18 +1,17 @@
 package com.contrabass.mapleclassic.application.view;
 
 import com.contrabass.mapleclassic.application.controller.FightController;
-import com.contrabass.mapleclassic.domain.entity.AttackInfoDTO;
-import com.contrabass.mapleclassic.domain.entity.CloneMonsterDTO;
-import com.contrabass.mapleclassic.domain.entity.PlayerDTO;
-import com.contrabass.mapleclassic.domain.entity.SkillDTO;
+import com.contrabass.mapleclassic.application.dto.AttackInfoDTO;
+import com.contrabass.mapleclassic.application.dto.CloneMonsterDTO;
+import com.contrabass.mapleclassic.application.dto.PlayerDTO;
+import com.contrabass.mapleclassic.application.dto.SkillDTO;
 import lombok.Getter;
 import lombok.Setter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
-
-import static com.contrabass.mapleclassic.Constant.SCANNER;
+import java.util.Scanner;
 
 @Getter
 @Setter
@@ -37,7 +36,7 @@ public class FightView {
         run = true;
         while (run) {
             printEntryFight();
-            switch (SCANNER.nextInt()) {
+            switch (new Scanner(System.in).nextInt()) {
                 case 1:
                     attackInfoDTO = fightController.playerMonsterFight(cloneMonsterDTO);
                     selectNormalAttack(cloneMonsterDTO, attackInfoDTO);
@@ -51,7 +50,7 @@ public class FightView {
                         System.out.println(i + 1 + ". " + skills.get(i).getSkillName());
                     }
                     while (true) {
-                        index = SCANNER.nextInt();
+                        index = new Scanner(System.in).nextInt();
                         if (index <= skills.size() && index > 0) {
                             break;
                         } else {

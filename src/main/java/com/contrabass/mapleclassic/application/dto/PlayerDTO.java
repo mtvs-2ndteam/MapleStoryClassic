@@ -1,4 +1,4 @@
-package com.contrabass.mapleclassic.domain.entity;
+package com.contrabass.mapleclassic.application.dto;
 
 
 import lombok.*;

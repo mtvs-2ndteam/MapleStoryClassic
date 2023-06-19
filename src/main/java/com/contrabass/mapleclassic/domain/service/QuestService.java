@@ -1,9 +1,8 @@
 package com.contrabass.mapleclassic.domain.service;
 
-import com.contrabass.mapleclassic.domain.entity.NpcQuestDTO;
-import com.contrabass.mapleclassic.domain.entity.PlayerDTO;
+import com.contrabass.mapleclassic.application.dto.NpcQuestDTO;
+import com.contrabass.mapleclassic.application.dto.PlayerDTO;
 import org.springframework.stereotype.Component;
-import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,8 +10,8 @@ import java.util.List;
 
 @Component
 public class QuestService {
-    private List<NpcQuestDTO> quests;
-    private PlayerDTO player;
+    private final List<NpcQuestDTO> quests;
+    private final PlayerDTO player;
 
     public QuestService(PlayerDTO player) {
         this.quests = new ArrayList<>();
@@ -24,7 +23,7 @@ public class QuestService {
     }
 
     public void completeQuest(NpcQuestDTO npcQuest) {
-        
+
     }
 }
 

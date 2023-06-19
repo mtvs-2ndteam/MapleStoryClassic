@@ -1,11 +1,14 @@
 package com.contrabass.mapleclassic.utils.contextconfiguration;
 
-import com.contrabass.mapleclassic.domain.entity.AttackInfoDTO;
-import com.contrabass.mapleclassic.domain.entity.CloneMonsterDTO;
-import com.contrabass.mapleclassic.domain.entity.MonsterDTO;
+import com.contrabass.mapleclassic.application.dto.AttackInfoDTO;
+import com.contrabass.mapleclassic.application.dto.CloneMonsterDTO;
+import com.contrabass.mapleclassic.application.dto.MonsterDTO;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.context.annotation.*;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.PropertySource;
 
 @Configuration
 @ComponentScan("com.contrabass.mapleclassic.application")
@@ -14,11 +17,11 @@ public class MonsterContextConfiguration {
     @Bean
     @Qualifier("henesysMonster1")
     public MonsterDTO henesysMonster1(@Value("${henesys.normal.monster1.name:}") String monsterName,
-                                      @Value("${henesys.normal.monster1.level:0}")int monsterLevel,
-                                      @Value("${henesys.normal.monster1.hp:0}")int monsterHp,
-                                      @Value("${henesys.normal.monster1.power:0}")int monsterPower,
-                                      @Value("${henesys.normal.monster1.dropMoney:0}")int monsterDropMoney,
-                                      @Value("${henesys.normal.monster1.exp:0}")int exp) {
+                                      @Value("${henesys.normal.monster1.level:0}") int monsterLevel,
+                                      @Value("${henesys.normal.monster1.hp:0}") int monsterHp,
+                                      @Value("${henesys.normal.monster1.power:0}") int monsterPower,
+                                      @Value("${henesys.normal.monster1.dropMoney:0}") int monsterDropMoney,
+                                      @Value("${henesys.normal.monster1.exp:0}") int exp) {
 
         return new MonsterDTO(monsterName, monsterLevel, monsterHp, monsterPower, monsterDropMoney, exp);
     }
@@ -26,11 +29,11 @@ public class MonsterContextConfiguration {
     @Bean
     @Qualifier("henesysMonster2")
     public MonsterDTO henesysMonster2(@Value("${henesys.normal.monster2.name:}") String monsterName,
-                                      @Value("${henesys.normal.monster2.level:0}")int monsterLevel,
-                                      @Value("${henesys.normal.monster2.hp:0}")int monsterHp,
-                                      @Value("${henesys.normal.monster2.power:0}")int monsterPower,
-                                      @Value("${henesys.normal.monster2.dropMoney:0}")int monsterDropMoney,
-                                      @Value("${henesys.normal.monster1.exp:0}")int exp) {
+                                      @Value("${henesys.normal.monster2.level:0}") int monsterLevel,
+                                      @Value("${henesys.normal.monster2.hp:0}") int monsterHp,
+                                      @Value("${henesys.normal.monster2.power:0}") int monsterPower,
+                                      @Value("${henesys.normal.monster2.dropMoney:0}") int monsterDropMoney,
+                                      @Value("${henesys.normal.monster1.exp:0}") int exp) {
 
         return new MonsterDTO(monsterName, monsterLevel, monsterHp, monsterPower, monsterDropMoney, exp);
     }
@@ -38,11 +41,11 @@ public class MonsterContextConfiguration {
     @Bean
     @Qualifier("henesysMonster3")
     public MonsterDTO henesysMonster3(@Value("${henesys.normal.monster3.name:}") String monsterName,
-                                      @Value("${henesys.normal.monster3.level:0}")int monsterLevel,
-                                      @Value("${henesys.normal.monster3.hp:0}")int monsterHp,
-                                      @Value("${henesys.normal.monster3.power:0}")int monsterPower,
-                                      @Value("${henesys.normal.monster3.dropMoney:0}")int monsterDropMoney,
-                                      @Value("${henesys.normal.monster1.exp:0}")int exp) {
+                                      @Value("${henesys.normal.monster3.level:0}") int monsterLevel,
+                                      @Value("${henesys.normal.monster3.hp:0}") int monsterHp,
+                                      @Value("${henesys.normal.monster3.power:0}") int monsterPower,
+                                      @Value("${henesys.normal.monster3.dropMoney:0}") int monsterDropMoney,
+                                      @Value("${henesys.normal.monster1.exp:0}") int exp) {
 
         return new MonsterDTO(monsterName, monsterLevel, monsterHp, monsterPower, monsterDropMoney, exp);
     }
@@ -50,11 +53,11 @@ public class MonsterContextConfiguration {
     @Bean
     @Qualifier("henesysMonster4")
     public MonsterDTO henesysMonster4(@Value("${henesys.normal.monster4.name:}") String monsterName,
-                                      @Value("${henesys.normal.monster4.level:0}")int monsterLevel,
-                                      @Value("${henesys.normal.monster4.hp:0}")int monsterHp,
-                                      @Value("${henesys.normal.monster4.power:0}")int monsterPower,
-                                      @Value("${henesys.normal.monster4.dropMoney:0}")int monsterDropMoney,
-                                      @Value("${henesys.normal.monster1.exp:0}")int exp) {
+                                      @Value("${henesys.normal.monster4.level:0}") int monsterLevel,
+                                      @Value("${henesys.normal.monster4.hp:0}") int monsterHp,
+                                      @Value("${henesys.normal.monster4.power:0}") int monsterPower,
+                                      @Value("${henesys.normal.monster4.dropMoney:0}") int monsterDropMoney,
+                                      @Value("${henesys.normal.monster1.exp:0}") int exp) {
 
         return new MonsterDTO(monsterName, monsterLevel, monsterHp, monsterPower, monsterDropMoney, exp);
     }
@@ -62,11 +65,11 @@ public class MonsterContextConfiguration {
     @Bean
     @Qualifier("henesysBoseMonster")
     public MonsterDTO henesysBoseMonster(@Value("${henesys.boss.monster1.name:}") String monsterName,
-                                         @Value("${henesys.boss.monster1.level:0}")int monsterLevel,
-                                         @Value("${henesys.boss.monster1.hp:0}")int monsterHp,
-                                         @Value("${henesys.boss.monster1.power:0}")int monsterPower,
-                                         @Value("${henesys.boss.monster1.dropMoney:0}")int monsterDropMoney,
-                                         @Value("${henesys.normal.monster1.exp:0}")int exp) {
+                                         @Value("${henesys.boss.monster1.level:0}") int monsterLevel,
+                                         @Value("${henesys.boss.monster1.hp:0}") int monsterHp,
+                                         @Value("${henesys.boss.monster1.power:0}") int monsterPower,
+                                         @Value("${henesys.boss.monster1.dropMoney:0}") int monsterDropMoney,
+                                         @Value("${henesys.normal.monster1.exp:0}") int exp) {
 
         return new MonsterDTO(monsterName, monsterLevel, monsterHp, monsterPower, monsterDropMoney, exp);
     }
@@ -74,11 +77,11 @@ public class MonsterContextConfiguration {
     @Bean
     @Qualifier("kerningCityMonster1")
     public MonsterDTO kerningCityMonster1(@Value("${kerningCity.normal.monster1.name:}") String monsterName,
-                                          @Value("${kerningCity.normal.monster1.level:0}")int monsterLevel,
-                                          @Value("${kerningCity.normal.monster1.hp:0}")int monsterHp,
-                                          @Value("${kerningCity.normal.monster1.power:0}")int monsterPower,
-                                          @Value("${kerningCity.normal.monster1.dropMoney:0}")int monsterDropMoney,
-                                          @Value("${henesys.normal.monster1.exp:0}")int exp) {
+                                          @Value("${kerningCity.normal.monster1.level:0}") int monsterLevel,
+                                          @Value("${kerningCity.normal.monster1.hp:0}") int monsterHp,
+                                          @Value("${kerningCity.normal.monster1.power:0}") int monsterPower,
+                                          @Value("${kerningCity.normal.monster1.dropMoney:0}") int monsterDropMoney,
+                                          @Value("${henesys.normal.monster1.exp:0}") int exp) {
 
         return new MonsterDTO(monsterName, monsterLevel, monsterHp, monsterPower, monsterDropMoney, exp);
     }
@@ -86,11 +89,11 @@ public class MonsterContextConfiguration {
     @Bean
     @Qualifier("kerningCityMonster2")
     public MonsterDTO kerningCityMonster2(@Value("${kerningCity.normal.monster2.name:}") String monsterName,
-                                          @Value("${kerningCity.normal.monster2.level:0}")int monsterLevel,
-                                          @Value("${kerningCity.normal.monster2.hp:0}")int monsterHp,
-                                          @Value("${kerningCity.normal.monster2.power:0}")int monsterPower,
-                                          @Value("${kerningCity.normal.monster2.dropMoney:0}")int monsterDropMoney,
-                                          @Value("${henesys.normal.monster1.exp:0}")int exp) {
+                                          @Value("${kerningCity.normal.monster2.level:0}") int monsterLevel,
+                                          @Value("${kerningCity.normal.monster2.hp:0}") int monsterHp,
+                                          @Value("${kerningCity.normal.monster2.power:0}") int monsterPower,
+                                          @Value("${kerningCity.normal.monster2.dropMoney:0}") int monsterDropMoney,
+                                          @Value("${henesys.normal.monster1.exp:0}") int exp) {
 
         return new MonsterDTO(monsterName, monsterLevel, monsterHp, monsterPower, monsterDropMoney, exp);
     }
@@ -98,11 +101,11 @@ public class MonsterContextConfiguration {
     @Bean
     @Qualifier("kerningCityMonster3")
     public MonsterDTO kerningCityMonster3(@Value("${kerningCity.normal.monster3.name:}") String monsterName,
-                                          @Value("${kerningCity.normal.monster3.level:0}")int monsterLevel,
-                                          @Value("${kerningCity.normal.monster3.hp:0}")int monsterHp,
-                                          @Value("${kerningCity.normal.monster3.power:0}")int monsterPower,
-                                          @Value("${kerningCity.normal.monster3.dropMoney:0}")int monsterDropMoney,
-                                          @Value("${henesys.normal.monster1.exp:0}")int exp) {
+                                          @Value("${kerningCity.normal.monster3.level:0}") int monsterLevel,
+                                          @Value("${kerningCity.normal.monster3.hp:0}") int monsterHp,
+                                          @Value("${kerningCity.normal.monster3.power:0}") int monsterPower,
+                                          @Value("${kerningCity.normal.monster3.dropMoney:0}") int monsterDropMoney,
+                                          @Value("${henesys.normal.monster1.exp:0}") int exp) {
 
         return new MonsterDTO(monsterName, monsterLevel, monsterHp, monsterPower, monsterDropMoney, exp);
     }
@@ -110,11 +113,11 @@ public class MonsterContextConfiguration {
     @Bean
     @Qualifier("kerningCityMonster4")
     public MonsterDTO kerningCityMonster4(@Value("${kerningCity.normal.monster4.name:}") String monsterName,
-                                          @Value("${kerningCity.normal.monster4.level:0}")int monsterLevel,
-                                          @Value("${kerningCity.normal.monster4.hp:0}")int monsterHp,
-                                          @Value("${kerningCity.normal.monster4.power:0}")int monsterPower,
-                                          @Value("${kerningCity.normal.monster4.dropMoney:0}")int monsterDropMoney,
-                                          @Value("${henesys.normal.monster1.exp:0}")int exp) {
+                                          @Value("${kerningCity.normal.monster4.level:0}") int monsterLevel,
+                                          @Value("${kerningCity.normal.monster4.hp:0}") int monsterHp,
+                                          @Value("${kerningCity.normal.monster4.power:0}") int monsterPower,
+                                          @Value("${kerningCity.normal.monster4.dropMoney:0}") int monsterDropMoney,
+                                          @Value("${henesys.normal.monster1.exp:0}") int exp) {
 
         return new MonsterDTO(monsterName, monsterLevel, monsterHp, monsterPower, monsterDropMoney, exp);
     }
@@ -122,11 +125,11 @@ public class MonsterContextConfiguration {
     @Bean
     @Qualifier("perionMonster1")
     public MonsterDTO perionMonster1(@Value("${perion.normal.monster1.name:}") String monsterName,
-                                     @Value("${perion.normal.monster1.level:0}")int monsterLevel,
-                                     @Value("${perion.normal.monster1.hp:0}")int monsterHp,
-                                     @Value("${perion.normal.monster1.power:0}")int monsterPower,
-                                     @Value("${perion.normal.monster1.dropMoney:0}")int monsterDropMoney,
-                                     @Value("${henesys.normal.monster1.exp:0}")int exp) {
+                                     @Value("${perion.normal.monster1.level:0}") int monsterLevel,
+                                     @Value("${perion.normal.monster1.hp:0}") int monsterHp,
+                                     @Value("${perion.normal.monster1.power:0}") int monsterPower,
+                                     @Value("${perion.normal.monster1.dropMoney:0}") int monsterDropMoney,
+                                     @Value("${henesys.normal.monster1.exp:0}") int exp) {
 
         return new MonsterDTO(monsterName, monsterLevel, monsterHp, monsterPower, monsterDropMoney, exp);
     }
@@ -134,11 +137,11 @@ public class MonsterContextConfiguration {
     @Bean
     @Qualifier("perionMonster2")
     public MonsterDTO perionMonster2(@Value("${perion.normal.monster2.name:}") String monsterName,
-                                     @Value("${perion.normal.monster2.level:0}")int monsterLevel,
-                                     @Value("${perion.normal.monster2.hp:0}")int monsterHp,
-                                     @Value("${perion.normal.monster2.power:0}")int monsterPower,
-                                     @Value("${perion.normal.monster2.dropMoney:0}")int monsterDropMoney,
-                                     @Value("${henesys.normal.monster1.exp:0}")int exp) {
+                                     @Value("${perion.normal.monster2.level:0}") int monsterLevel,
+                                     @Value("${perion.normal.monster2.hp:0}") int monsterHp,
+                                     @Value("${perion.normal.monster2.power:0}") int monsterPower,
+                                     @Value("${perion.normal.monster2.dropMoney:0}") int monsterDropMoney,
+                                     @Value("${henesys.normal.monster1.exp:0}") int exp) {
 
         return new MonsterDTO(monsterName, monsterLevel, monsterHp, monsterPower, monsterDropMoney, exp);
     }
@@ -146,11 +149,11 @@ public class MonsterContextConfiguration {
     @Bean
     @Qualifier("perionMonster3")
     public MonsterDTO perionMonster3(@Value("${perion.normal.monster3.name:}") String monsterName,
-                                     @Value("${perion.normal.monster3.level:0}")int monsterLevel,
-                                     @Value("${perion.normal.monster3.hp:0}")int monsterHp,
-                                     @Value("${perion.normal.monster3.power:0}")int monsterPower,
-                                     @Value("${perion.normal.monster3.dropMoney:0}")int monsterDropMoney,
-                                     @Value("${henesys.normal.monster1.exp:0}")int exp) {
+                                     @Value("${perion.normal.monster3.level:0}") int monsterLevel,
+                                     @Value("${perion.normal.monster3.hp:0}") int monsterHp,
+                                     @Value("${perion.normal.monster3.power:0}") int monsterPower,
+                                     @Value("${perion.normal.monster3.dropMoney:0}") int monsterDropMoney,
+                                     @Value("${henesys.normal.monster1.exp:0}") int exp) {
 
         return new MonsterDTO(monsterName, monsterLevel, monsterHp, monsterPower, monsterDropMoney, exp);
     }
@@ -158,11 +161,11 @@ public class MonsterContextConfiguration {
     @Bean
     @Qualifier("perionMonster4")
     public MonsterDTO perionMonster4(@Value("${perion.normal.monster4.name:}") String monsterName,
-                                     @Value("${perion.normal.monster4.level:0}")int monsterLevel,
-                                     @Value("${perion.normal.monster4.hp:0}")int monsterHp,
-                                     @Value("${perion.normal.monster4.power:0}")int monsterPower,
-                                     @Value("${perion.normal.monster4.dropMoney:0}")int monsterDropMoney,
-                                     @Value("${henesys.normal.monster1.exp:0}")int exp) {
+                                     @Value("${perion.normal.monster4.level:0}") int monsterLevel,
+                                     @Value("${perion.normal.monster4.hp:0}") int monsterHp,
+                                     @Value("${perion.normal.monster4.power:0}") int monsterPower,
+                                     @Value("${perion.normal.monster4.dropMoney:0}") int monsterDropMoney,
+                                     @Value("${henesys.normal.monster1.exp:0}") int exp) {
 
         return new MonsterDTO(monsterName, monsterLevel, monsterHp, monsterPower, monsterDropMoney, exp);
     }

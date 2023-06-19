@@ -1,8 +1,8 @@
 package contrabass.mapleclassic.application.view;
 
 import com.contrabass.mapleclassic.application.controller.FightController;
+import com.contrabass.mapleclassic.application.dto.MonsterDTO;
 import com.contrabass.mapleclassic.application.view.FightView;
-import com.contrabass.mapleclassic.domain.entity.MonsterDTO;
 import com.contrabass.mapleclassic.utils.contextconfiguration.MonsterContextConfiguration;
 import org.junit.jupiter.api.BeforeEach;
 import org.springframework.context.ApplicationContext;
