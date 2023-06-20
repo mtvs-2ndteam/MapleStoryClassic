@@ -2,6 +2,7 @@ package com.contrabass.mapleclassic.application.service;
 
 import com.contrabass.mapleclassic.application.dto.SaunaDTO;
 import com.contrabass.mapleclassic.application.dto.ShopDTO;
+import com.contrabass.mapleclassic.domain.repository.PlayerDAO;
 import com.contrabass.mapleclassic.domain.service.GameDomainService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -9,10 +10,12 @@ import org.springframework.stereotype.Service;
 @Service
 public class GameService {
     private final GameDomainService gameDomainService;
+    private final PlayerDAO playerDAO;
 
     @Autowired
-    public GameService(GameDomainService gameDomainService) {
+    public GameService(GameDomainService gameDomainService, PlayerDAO playerDAO) {
         this.gameDomainService = gameDomainService;
+        this.playerDAO = playerDAO;
     }
 
 
@@ -91,5 +94,7 @@ public class GameService {
         return gameDomainService.recover(saunaDTO, time, standard(saunaDTO));
     }
 
-
+    public String saveStatus(int selectNum,int pointNum){
+        return playerDAO.insertStat(selectNum,pointNum);
+    }
 }
