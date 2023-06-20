@@ -2,6 +2,7 @@ package com.contrabass.mapleclassic.domain.service;
 
 import com.contrabass.mapleclassic.application.dto.SaunaDTO;
 import com.contrabass.mapleclassic.application.dto.ShopDTO;
+import com.contrabass.mapleclassic.domain.repository.PlayerDAO;
 import org.springframework.stereotype.Component;
 
 import java.util.concurrent.TimeUnit;

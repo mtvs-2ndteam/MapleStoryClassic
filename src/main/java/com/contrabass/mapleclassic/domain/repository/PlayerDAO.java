@@ -43,16 +43,18 @@ public class PlayerDAO {
     }
 
     public String insertStat(int num, int statNum) {
+        System.out.println(statNum);
         String msg = "";
-
-        if (statNum == 0) { //사용할 포인트
-            msg = "사용할 포인트를 적어주세요";
+        if (!Integer.class.isInstance(statNum)||0>statNum){
+            msg="잘못된 입력입니다.";
+        } else if (statNum == 0) { //사용할 포인트
+            msg = "포인트를 입력해주세요.";
         } else if (dto.getStatPoint() == 0) { //시용할수 있는 포인트
             msg = "사용 할수 있는 포인트가 없습니다.";
         } else if (dto.getStatPoint() < statNum) {
             msg = "사용하려는 포인트는 보유포인트를 초과할수 없습니다.";
         } else {
-            msg = "스텟 포인트가 사용되었습니다";
+            msg = "스텟 포인트가 사용되었습니다.";
             switch (num) { //1.공격력 ,2.마력 ,3.방어력 ,4.크리티컬 확률 ,5.크리티컬 데미지
                 case 1:
                     dto.setAtk(dto.getAtk() + statNum);
@@ -78,7 +80,7 @@ public class PlayerDAO {
                     msg = "잘못된 선택입니다";
             }
         }
-        return msg;
+        return msg+"\n";
     }
 
 }

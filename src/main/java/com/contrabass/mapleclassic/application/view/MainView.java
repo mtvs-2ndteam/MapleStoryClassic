@@ -4,6 +4,8 @@ import com.contrabass.mapleclassic.application.controller.GameController;
 import com.contrabass.mapleclassic.application.dto.PlayerDTO;
 import com.contrabass.mapleclassic.application.dto.SaunaDTO;
 import com.contrabass.mapleclassic.application.dto.ShopDTO;
+import com.contrabass.mapleclassic.application.dto.SkillDTO;
+import com.contrabass.mapleclassic.domain.repository.SkillDAO;
 import com.contrabass.mapleclassic.utils.MainException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -17,6 +19,7 @@ public class MainView {
     private final PlayerDTO playerDTO;
     private final ShopDTO shopDTO;
     private final SaunaDTO saunaDTO;
+
 
     @Autowired
     public MainView(GameController gameController, MainException mainException
@@ -68,12 +71,35 @@ public class MainView {
 
             // 1. 스텟 찍기
             if (selectNum == 1) {
-//                playerDAO.checkStat();
-                printStatusMessage();
+                saveStat();
                 continue;
             }
 
             // 0. 로비
+            if (selectNum == 0) {
+                printLobbyMessage();
+                return;
+            }
+
+            // 에러
+            printErrorMessage();
+        }
+    }
+
+    public void saveStat() {
+        while (true) {
+            printStatusMessage();
+            int selectNum = input();
+            // 1. 스텟 찍기
+            if (selectNum <=5&&selectNum>=1) {
+                printStatusPointMessage();
+                int pointNum=input();
+                String msg=gameController.statusSave(selectNum,pointNum);
+                System.out.println(msg);
+                continue;
+            }
+
+            // 0. 돌아가기
             if (selectNum == 0) {
                 printLobbyMessage();
                 return;
@@ -504,12 +530,17 @@ public class MainView {
     }
 
     public void printStatusMessage() {
+        System.out.println("찍고싶은 스텟을 적어주세요");
         System.out.println("1. 공격력");
         System.out.println("2. 마력");
         System.out.println("3. 방어력");
         System.out.println("4. 크리티컬확률");
         System.out.println("5. 크리티컬데미지");
         System.out.println("0. 돌아가기");
+    }
+
+    public void printStatusPointMessage() {
+        System.out.println("사용하고자 하는 스텟포인트를 적어주세요");
     }
 
     public void printErrorMessage() {
@@ -548,10 +579,21 @@ public class MainView {
                 + "\n크리티컬 확률: " + player.getCriPercent() + "%  크리티컬 데미지: " + player.getCriPercent() + "%");
     }
 
+    public void printUserSkillInfo(PlayerDTO player){
+        for (SkillDTO skill : player.getSkills()) {
+            System.out.println("|" + skill.getSkillName() + ":\t데미지 :\t" +
+                    skill.getSkillDmg() + "\t마나소모량 :" +
+                    skill.getUseMp() + "\t스킬레벨 :\t" +
+                    skill.getSkillLevel() + "|");
+        }
+    }
+
     public void printSelectMyInfo(PlayerDTO player) {
         printUserDetailInfo(player);
+        printUserSkillInfo(player);
         System.out.println("=========== 내 정보 ===========");
         System.out.println("1. 스텟 찍기");
+        System.out.println("2. 스킬 찍기");
         System.out.println("0. 로비로 가기");
     }
 

@@ -13,7 +13,7 @@ import java.util.Map;
 public class SkillDAO {
     private Map<Integer, SkillDTO> skillList;
 
-    @Autowired
+
     public SkillDAO() {
         this.skillList = new HashMap<>();
         skillList.put(1, new SkillDTO(20, "에너지볼트", 1, 10));

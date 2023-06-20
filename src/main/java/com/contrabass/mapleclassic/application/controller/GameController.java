@@ -41,5 +41,5 @@ public class GameController {
         return gameService.goSaunaService(saunaDTO, time);
     }
 
-
+    public String statusSave(int selectNum,int pointNum){return gameService.saveStatus(selectNum,pointNum);}
 }
